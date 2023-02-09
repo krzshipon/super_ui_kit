@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "865350843548",
+    "project_id": "cs-super-notes",
+    "storage_bucket": "cs-super-notes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865350843548:android:bc7e5a234b24678616c159",
+        "android_client_info": {
+          "package_name": "com.cyclicsoft.super_notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865350843548-0gvn56jar8s0ot9mulri185js5ub8uda.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz_KtvqN3fafSim8F8q_teSDxlB8zNwgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865350843548-0gvn56jar8s0ot9mulri185js5ub8uda.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "865350843548-i931l3udjukhrqrjpb88511pbdeotbuk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cyclicsoft.supernotes"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865350843548:android:96d630511243704216c159",
+        "android_client_info": {
+          "package_name": "com.cyclicsoft.super_notes_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865350843548-0gvn56jar8s0ot9mulri185js5ub8uda.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz_KtvqN3fafSim8F8q_teSDxlB8zNwgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865350843548-0gvn56jar8s0ot9mulri185js5ub8uda.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "865350843548-i931l3udjukhrqrjpb88511pbdeotbuk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cyclicsoft.supernotes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

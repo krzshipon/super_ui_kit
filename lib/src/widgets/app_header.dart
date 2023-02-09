@@ -23,15 +23,18 @@ class CSHeader extends StatelessWidget {
       children: [
         Expanded(
           flex: 2,
-          child: Center(
-              child: CSIconButton(
-            icon: (headerType == HeaderType.home)
-                ? Icons.home_sharp
-                : Icons.arrow_back_sharp,
-            ontap: (headerType == HeaderType.home)
-                ? null
-                : () => Navigator.of(context).pop(),
-          )),
+          child: (headerType != HeaderType.home)
+              ? Center(
+                  child: CSIconButton(
+                    icon: (headerType == HeaderType.home)
+                        ? Icons.home_sharp
+                        : Icons.arrow_back_sharp,
+                    ontap: (headerType == HeaderType.home)
+                        ? null
+                        : () => Navigator.of(context).pop(),
+                  ),
+                )
+              : Container(),
         ),
         Expanded(
           flex: 6,

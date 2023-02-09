@@ -81,7 +81,7 @@ class CSText extends StatelessWidget {
                 : (textType == TextType.title)
                     ? textTheme.titleMedium
                     : (textType == TextType.label)
-                        ? textTheme.labelMedium
+                        ? textTheme.labelSmall?.copyWith(color: Colors.blueGrey)
                         : textTheme.bodyMedium);
     textStyle?.copyWith(color: color, fontSize: fontSize);
 

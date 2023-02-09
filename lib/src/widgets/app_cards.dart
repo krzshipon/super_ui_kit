@@ -20,6 +20,7 @@ const int kCardSplashAlpha = 45;
 
 class CSCard extends StatelessWidget {
   final void Function()? onTap;
+  final void Function(bool)? onHover;
   final List<Widget> childrens;
   final CSCardType cardType;
   final EdgeInsetsGeometry? padding;
@@ -30,6 +31,7 @@ class CSCard extends StatelessWidget {
   const CSCard(
       {super.key,
       this.onTap,
+      this.onHover,
       required this.childrens,
       this.cardType = CSCardType.item,
       this.padding,
@@ -62,6 +64,7 @@ class CSCard extends StatelessWidget {
                 .primary
                 .withAlpha(kCardSplashAlpha),
             onTap: onTap,
+            onHover: onHover,
             child: SizedBox(
               width: (cardType == CSCardType.form)
                   ? constraints.responsiveValue(
@@ -85,6 +88,7 @@ class CSCard extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: mainAxisAlignment,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: childrens,
                 ),
               ),
