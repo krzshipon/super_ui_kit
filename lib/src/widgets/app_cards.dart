@@ -20,23 +20,23 @@ const int kCardSplashAlpha = 45;
 
 class CSCard extends StatelessWidget {
   final void Function()? onTap;
-  final void Function(bool)? onHover;
   final List<Widget> childrens;
   final CSCardType cardType;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final double? radius;
   final MainAxisAlignment mainAxisAlignment;
+  final double? elevation;
 
   const CSCard(
       {super.key,
       this.onTap,
-      this.onHover,
       required this.childrens,
       this.cardType = CSCardType.item,
       this.padding,
       this.margin,
       this.radius,
+      this.elevation = 7,
       this.mainAxisAlignment = MainAxisAlignment.start});
   @override
   Widget build(BuildContext context) =>
@@ -52,7 +52,7 @@ class CSCard extends StatelessWidget {
                           large: kmCardMarginL) ??
                       kmCardMarginL)
                   : const EdgeInsets.all(kmCardMarginS),
-          elevation: 7,
+          elevation: elevation,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(radius ?? 15),
@@ -64,7 +64,6 @@ class CSCard extends StatelessWidget {
                 .primary
                 .withAlpha(kCardSplashAlpha),
             onTap: onTap,
-            onHover: onHover,
             child: SizedBox(
               width: (cardType == CSCardType.form)
                   ? constraints.responsiveValue(
@@ -88,7 +87,6 @@ class CSCard extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: mainAxisAlignment,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: childrens,
                 ),
               ),

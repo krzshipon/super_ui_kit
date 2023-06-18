@@ -11,6 +11,7 @@ class CSText extends StatelessWidget {
   final TextOverflow? overflow;
   final TextAlign? textAlign;
   final TextType textType;
+  final TextDecoration? decoration;
 
   const CSText(this.text,
       {Key? key,
@@ -20,6 +21,7 @@ class CSText extends StatelessWidget {
       this.maxLines,
       this.textAlign,
       this.overflow,
+      this.decoration,
       this.textType = TextType.body})
       : super(key: key);
 
@@ -32,6 +34,7 @@ class CSText extends StatelessWidget {
     this.overflow,
     this.textAlign,
     this.style,
+    this.decoration,
     this.textType = TextType.display,
   });
   const CSText.headline(
@@ -43,6 +46,7 @@ class CSText extends StatelessWidget {
     this.overflow,
     this.textAlign,
     this.style,
+    this.decoration,
     this.textType = TextType.headline,
   });
 
@@ -55,6 +59,7 @@ class CSText extends StatelessWidget {
     this.overflow,
     this.textAlign,
     this.style,
+    this.decoration,
     this.textType = TextType.title,
   });
 
@@ -67,6 +72,7 @@ class CSText extends StatelessWidget {
     this.textAlign,
     this.style,
     this.fontSize,
+    this.decoration,
     this.textType = TextType.label,
   });
 
@@ -81,13 +87,16 @@ class CSText extends StatelessWidget {
                 : (textType == TextType.title)
                     ? textTheme.titleMedium
                     : (textType == TextType.label)
-                        ? textTheme.labelSmall?.copyWith(color: Colors.blueGrey)
+                        ? textTheme.labelMedium
                         : textTheme.bodyMedium);
     textStyle?.copyWith(color: color, fontSize: fontSize);
 
     return Text(
       text,
-      style: textStyle,
+      style: textStyle?.copyWith(
+        decoration: decoration,
+        decorationStyle: TextDecorationStyle.solid,
+      ),
       maxLines: maxLines,
       overflow: overflow,
       textAlign: textAlign,

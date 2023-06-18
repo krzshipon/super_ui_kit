@@ -19,7 +19,7 @@ class CSInputField extends StatelessWidget {
   );
   final int? maxLines;
 
-  final double height = 40.0;
+  final double height = 50.0;
   final double heightExtensionForError = 25.0;
 
   CSInputField(
@@ -52,10 +52,10 @@ class CSInputField extends StatelessWidget {
         controller: controller,
         obscureText: isPassword,
         keyboardType: inputType ?? TextInputType.text,
-        maxLines: maxLines,
+        maxLines: isPassword ? 1 : maxLines,
         decoration: InputDecoration(
           labelText: placeholder,
-          labelStyle: Theme.of(context).textTheme.subtitle2,
+          labelStyle: Theme.of(context).textTheme.titleSmall,
           contentPadding:
               const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           filled: true,
@@ -70,7 +70,8 @@ class CSInputField extends StatelessWidget {
           errorBorder: circularBorder.copyWith(
               borderSide: const BorderSide(color: Colors.red)),
           focusedBorder: circularBorder.copyWith(
-              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary)),
+              borderSide:
+                  BorderSide(color: Theme.of(context).colorScheme.primary)),
           enabledBorder: circularBorder.copyWith(
               borderSide: const BorderSide(color: Colors.blueGrey)),
         ),

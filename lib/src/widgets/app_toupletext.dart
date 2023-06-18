@@ -20,12 +20,12 @@ class CSToupleText extends StatelessWidget {
         child: Row(mainAxisSize: MainAxisSize.min, children: [
           Text(
             text1,
-            style: Theme.of(context).textTheme.bodyText1
+            style: Theme.of(context).textTheme.bodyLarge
                 ?.copyWith(color: Theme.of(context).colorScheme.onSecondary),
           ),
           Text(
             " $text2",
-            style: Theme.of(context).textTheme.bodyText1
+            style: Theme.of(context).textTheme.bodyLarge
                 ?.copyWith(color: Theme.of(context).colorScheme.secondary),
           )
         ]));

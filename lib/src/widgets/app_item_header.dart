@@ -14,7 +14,7 @@ class CSItemHeader extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: leftPadding),
       child:
-          Align(alignment: Alignment.centerLeft, child: CSText(title, style: Theme.of(context).textTheme.caption,)),
+          Align(alignment: Alignment.centerLeft, child: CSText(title, style: Theme.of(context).textTheme.bodySmall,)),
     );
   }
 }

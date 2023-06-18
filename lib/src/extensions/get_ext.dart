@@ -15,7 +15,7 @@ const kSnackbarSecondsDuration = 2;
 
 extension AppDialog on GetInterface {
   void showLoader() {
-    Get.dialog(LottieBuilder.asset('assets/animations/loader.json', width: 100, height: 100,));
+    Get.dialog(LottieBuilder.asset('assets/animations/loader.json'));
   }
 
   void hideLoader() {

@@ -42,13 +42,13 @@ class CSDropDown extends StatelessWidget {
         .toList();
     menuItems.insert(
         0,
-        const DropdownMenuItem(
+      const DropdownMenuItem(
           value: kSelectionInstruction,
           child: CSText(kSelectionInstruction),
         ));
     menuItems.insert(
         menuItems.length,
-        const DropdownMenuItem(
+      const DropdownMenuItem(
           value: kOtherSelection,
           child: CSText(kOtherSelection),
         ));
@@ -72,7 +72,7 @@ class CSDropDown extends StatelessWidget {
               margin: EdgeInsets.zero,
               childrens: [
                 DropdownButtonFormField(
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyLarge,
                   dropdownColor: kCardBackgroundColor,
                   value: value?.isEmpty ?? true
                       ? dropdownItems.first.value
@@ -84,7 +84,7 @@ class CSDropDown extends StatelessWidget {
                 if (error != null)
                   CSText(
                     error!,
-                    color: Theme.of(context).errorColor,
+                    color: Theme.of(context).colorScheme.error,
                     textType: TextType.label,
                   ),
                 if (editable)

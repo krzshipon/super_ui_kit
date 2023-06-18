@@ -77,7 +77,7 @@ class CSButton extends StatelessWidget {
                     ),
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight:
                             !isOutlined ? FontWeight.normal : FontWeight.w400,
                         color: !isOutlined
@@ -103,8 +103,10 @@ class CSIconButton extends StatelessWidget {
   final IconData? icon;
   final String? text;
   final Color? color;
+  final double? elevation;
 
-  const CSIconButton({Key? key, this.ontap, this.icon, this.text, this.color})
+  const CSIconButton(
+      {Key? key, this.ontap, this.icon, this.text, this.color, this.elevation})
       : super(key: key);
 
   @override
@@ -113,6 +115,7 @@ class CSIconButton extends StatelessWidget {
       margin: EdgeInsets.zero,
       radius: 100,
       onTap: ontap,
+      elevation: elevation,
       cardType: CSCardType.item,
       padding: (text == null)
           ? const EdgeInsets.all(7)
