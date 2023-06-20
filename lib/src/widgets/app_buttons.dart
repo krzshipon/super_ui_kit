@@ -79,7 +79,7 @@ class CSButton extends StatelessWidget {
                     title,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight:
-                            !isOutlined ? FontWeight.normal : FontWeight.w400,
+                            !isOutlined ? FontWeight.bold : FontWeight.w400,
                         color: !isOutlined
                             ? Colors.white
                             : Theme.of(context).colorScheme.secondary),
