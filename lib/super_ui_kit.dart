@@ -19,6 +19,7 @@ export 'src/shared/app_sizes.dart';
 export 'src/shared/app_styles.dart';
 export 'src/shared/app_ui_helpers.dart';
 export 'src/shared/app_breakpoints.dart';
+export 'src/shared/app_utils.dart';
 
 
 export 'src/extensions/date_time_ext.dart';
