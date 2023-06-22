@@ -7,7 +7,7 @@ class CsSettingItem extends GetView {
   final String? header;
   final IconData iconData;
   final String title;
-  final Function()? ontap;
+  final Function()? onTap;
   final bool showTrailing;
 
   const CsSettingItem(
@@ -15,7 +15,7 @@ class CsSettingItem extends GetView {
       required this.iconData,
       required this.title,
       this.header,
-      this.ontap,
+      this.onTap,
       this.showTrailing = true});
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class CsSettingItem extends GetView {
         Row(children: [
           Expanded(
             child: CSCard(
-              onTap: ontap,
+              onTap: onTap,
               radius: cornerRadius,
               margin: (header != null)
                   ? const EdgeInsets.only(
