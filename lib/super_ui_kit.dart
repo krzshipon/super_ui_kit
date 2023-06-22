@@ -12,6 +12,7 @@ export 'src/widgets/app_page.dart';
 export 'src/widgets/app_text.dart';
 export 'src/widgets/app_toupletext.dart';
 export 'src/widgets/app_animation.dart';
+export 'src/widgets/setting_item.dart';
 
 
 export 'src/shared/app_colors.dart';
