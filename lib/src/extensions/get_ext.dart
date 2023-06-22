@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:super_ui_kit/src/shared/app_config.dart';
 
 import '../shared/app_ui_helpers.dart';
 import '../widgets/app_text.dart';
 
 enum DialogType { success, error, alert, general }
 
-const kDialogSucessAnim = 'assets/animations/anim_dialog_success.json';
+const kDialogSuccessAnim = 'assets/animations/anim_dialog_success.json';
 const kDialogErrorAnim = 'assets/animations/anim_dialog_error.json';
 const kDialogAlertAnim = 'assets/animations/anim_dialog_alert.json';
 const kDialogGeneralAnim = 'assets/animations/anim_dialog_info.json';
@@ -15,7 +16,13 @@ const kSnackbarSecondsDuration = 2;
 
 extension AppDialog on GetInterface {
   void showLoader() {
-    Get.dialog(LottieBuilder.asset('assets/animations/loader.json'));
+    printInfo(info: 'Loader property: Width: ${AppConfig.loaderScale}');
+    Get.dialog(
+      Transform.scale(
+        scale: AppConfig.loaderScale ?? 1.0,
+        child: Lottie.asset('assets/animations/loader.json'),
+      ),
+    );
   }
 
   void hideLoader() {
@@ -52,7 +59,7 @@ extension AppDialog on GetInterface {
           children: [
             LottieBuilder.asset(
               (dialogType == DialogType.success)
-                  ? kDialogSucessAnim
+                  ? kDialogSuccessAnim
                   : (dialogType == DialogType.error)
                       ? kDialogErrorAnim
                       : (dialogType == DialogType.alert)
