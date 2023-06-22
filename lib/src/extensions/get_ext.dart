@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:super_ui_kit/src/shared/app_config.dart';
 
 import '../shared/app_ui_helpers.dart';
 import '../widgets/app_text.dart';
@@ -15,7 +16,8 @@ const kSnackbarSecondsDuration = 2;
 
 extension AppDialog on GetInterface {
   void showLoader() {
-    Get.dialog(LottieBuilder.asset('assets/animations/loader.json'));
+    Get.dialog(LottieBuilder.asset('assets/animations/loader.json',
+        width: AppConfig.loaderWidth, height: AppConfig.loaderHeight));
   }
 
   void hideLoader() {
