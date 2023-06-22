@@ -19,7 +19,7 @@ extension AppDialog on GetInterface {
     printInfo(info: 'Loader property: Width: ${AppConfig.loaderScale}');
     Get.dialog(
       Transform.scale(
-        scale: AppConfig.loaderScale,
+        scale: AppConfig.loaderScale ?? 1.0,
         child: Lottie.asset('assets/animations/loader.json'),
       ),
     );
