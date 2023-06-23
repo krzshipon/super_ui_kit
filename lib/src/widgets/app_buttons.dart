@@ -104,9 +104,16 @@ class CSIconButton extends StatelessWidget {
   final String? text;
   final Color? color;
   final double? elevation;
+  final EdgeInsets? padding;
 
   const CSIconButton(
-      {Key? key, this.onTap, this.icon, this.text, this.color, this.elevation})
+      {Key? key,
+      this.onTap,
+      this.icon,
+      this.text,
+      this.color,
+      this.elevation,
+      this.padding})
       : super(key: key);
 
   @override
@@ -117,9 +124,11 @@ class CSIconButton extends StatelessWidget {
       onTap: onTap,
       elevation: elevation,
       cardType: CSCardType.item,
-      padding: (text == null)
-          ? const EdgeInsets.all(7)
-          : const EdgeInsets.fromLTRB(20, 10, 20, 10),
+      padding: (padding != null)
+          ? padding
+          : (text == null)
+              ? const EdgeInsets.all(7)
+              : const EdgeInsets.fromLTRB(20, 10, 20, 10),
       childrens: [
         Row(
           mainAxisSize: MainAxisSize.min,

@@ -65,6 +65,8 @@ class AddressItem extends GetView {
                                       ? Icons.check_circle_outline_rounded
                                       : null,
                                   onTap: onDefaultIconTap,
+                                  elevation: 0,
+                                  padding: EdgeInsets.zero,
                                 ),
                               ),
                             ),
@@ -88,6 +90,8 @@ class AddressItem extends GetView {
                             child: CSIconButton(
                               icon: Icons.add_location_alt_outlined,
                               onTap: onEditIconTap,
+                              elevation: 0,
+                              padding: EdgeInsets.zero,
                             ),
                           ),
                         ],
