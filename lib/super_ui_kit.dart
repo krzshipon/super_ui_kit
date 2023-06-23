@@ -12,8 +12,9 @@ export 'src/widgets/app_page.dart';
 export 'src/widgets/app_text.dart';
 export 'src/widgets/app_toupletext.dart';
 export 'src/widgets/app_animation.dart';
-export 'src/widgets/setting_item.dart';
-export 'src/widgets/profile_item.dart';
+export 'src/widgets/item_setting.dart';
+export 'src/widgets/item_profile.dart';
+export 'src/widgets/item_address.dart';
 
 
 export 'src/shared/app_colors.dart';
@@ -30,6 +31,9 @@ export 'src/extensions/build_context_ext.dart';
 export 'src/extensions/get_ext.dart';
 export 'src/extensions/box_constraint_ext.dart';
 export 'package:google_fonts/google_fonts.dart';
+
+//models
+export 'src/models/address.dart';
 
 //other packages
 export 'package:lottie/lottie.dart';
