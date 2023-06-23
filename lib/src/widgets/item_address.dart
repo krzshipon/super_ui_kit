@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../models/address.dart';
 import '../shared/app_ui_helpers.dart';
+import 'app_buttons.dart';
 import 'app_cards.dart';
 import 'app_text.dart';
 
@@ -17,9 +18,17 @@ class AddressItem extends GetView {
   final cornerRadius = 10.0;
 
   final CsAddress address;
-  final Function()? ontap;
+  final Function()? onTap;
+  final Function()? onDefaultIconTap;
+  final Function()? onEditIconTap;
 
-  const AddressItem(this.address, {this.ontap});
+  const AddressItem(
+    this.address, {
+    super.key,
+    this.onTap,
+    this.onDefaultIconTap,
+    this.onEditIconTap,
+  });
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,7 +39,7 @@ class AddressItem extends GetView {
           children: [
             Expanded(
               child: CSCard(
-                onTap: ontap,
+                onTap: onTap,
                 radius: cornerRadius,
                 padding: EdgeInsets.zero,
                 cardType: CSCardType.item,
@@ -44,14 +53,19 @@ class AddressItem extends GetView {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const Expanded(
+                          Expanded(
                             flex: 1,
                             child: Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: kAddressCardItemsPaddingV),
                               child: Align(
                                 alignment: Alignment.centerLeft,
-                                child: Icon(null),
+                                child: CSIconButton(
+                                  icon: (address.isDefault ?? false)
+                                      ? Icons.check_circle_outline_rounded
+                                      : null,
+                                  onTap: onDefaultIconTap,
+                                ),
                               ),
                             ),
                           ),
@@ -71,11 +85,9 @@ class AddressItem extends GetView {
                           ),
                           Expanded(
                             flex: 1,
-                            child: Icon(
-                              (address.isDefault ?? false)
-                                  ? Icons.check_circle_outline_rounded
-                                  : null,
-                              color: Get.theme.colorScheme.onPrimary,
+                            child: CSIconButton(
+                              icon: Icons.add_location_alt_outlined,
+                              onTap: onEditIconTap,
                             ),
                           ),
                         ],
@@ -88,8 +100,14 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(child: CSText("address_label_name".tr)),
-                        Expanded(child: CSText(address.name ?? "")),
+                        Expanded(
+                          flex: 1,
+                          child: CSText("address_label_name".tr),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: CSText(address.name ?? ""),
+                        ),
                       ],
                     ),
                   ),
@@ -98,8 +116,14 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(child: CSText("address_label_mobile".tr)),
-                        Expanded(child: CSText(address.mobile ?? '')),
+                        Expanded(
+                          flex: 1,
+                          child: CSText("address_label_mobile".tr),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: CSText(address.mobile ?? ''),
+                        ),
                       ],
                     ),
                   ),
@@ -108,8 +132,14 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(child: CSText("address_label_division".tr)),
-                        Expanded(child: CSText(address.division ?? "")),
+                        Expanded(
+                          flex: 1,
+                          child: CSText("address_label_division".tr),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: CSText(address.division ?? ""),
+                        ),
                       ],
                     ),
                   ),
@@ -118,8 +148,14 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(child: CSText("address_label_city".tr)),
-                        Expanded(child: CSText(address.city ?? "")),
+                        Expanded(
+                          flex: 1,
+                          child: CSText("address_label_city".tr),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: CSText(address.city ?? ""),
+                        ),
                       ],
                     ),
                   ),
@@ -128,8 +164,14 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(child: CSText("address_label_area".tr)),
-                        Expanded(child: CSText(address.area ?? "")),
+                        Expanded(
+                          flex: 1,
+                          child: CSText("address_label_area".tr),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: CSText(address.area ?? ""),
+                        ),
                       ],
                     ),
                   ),
@@ -138,8 +180,14 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(child: CSText("address_label_addressLine".tr)),
-                        Expanded(child: CSText(address.addressLine ?? "")),
+                        Expanded(
+                          flex: 1,
+                          child: CSText("address_label_addressLine".tr),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: CSText(address.addressLine ?? ""),
+                        ),
                       ],
                     ),
                   ),
