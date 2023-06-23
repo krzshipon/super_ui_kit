@@ -88,7 +88,7 @@ class AddressItem extends GetView {
                                   ? Icons.check_circle_outline_rounded
                                   : null,
                               onTap: onEditIconTap,
-                              color: Get.theme.colorScheme.secondary,
+                              color: Get.theme.colorScheme.onPrimary,
                             ),
                           ),
                         ],
