@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:super_ui_kit/src/widgets/app_icon.dart';
 
 import '../models/address.dart';
 import '../shared/app_ui_helpers.dart';
@@ -60,13 +61,11 @@ class AddressItem extends GetView {
                                   left: kAddressCardItemsPaddingV),
                               child: Align(
                                 alignment: Alignment.centerLeft,
-                                child: CSIconButton(
-                                  icon: (address.isDefault ?? false)
+                                child: CsIcon(
+                                  (address.isDefault ?? false)
                                       ? Icons.check_circle_outline_rounded
                                       : null,
                                   onTap: onDefaultIconTap,
-                                  elevation: 0,
-                                  padding: EdgeInsets.zero,
                                 ),
                               ),
                             ),
@@ -87,11 +86,9 @@ class AddressItem extends GetView {
                           ),
                           Expanded(
                             flex: 1,
-                            child: CSIconButton(
-                              icon: Icons.add_location_alt_outlined,
+                            child: CsIcon(
+                              Icons.add_location_alt_outlined,
                               onTap: onEditIconTap,
-                              elevation: 0,
-                              padding: EdgeInsets.zero,
                             ),
                           ),
                         ],
