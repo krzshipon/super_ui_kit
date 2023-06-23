@@ -54,19 +54,15 @@ class AddressItem extends GetView {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Expanded(
+                          const Expanded(
                             flex: 1,
                             child: Padding(
-                              padding: const EdgeInsets.only(
+                              padding: EdgeInsets.only(
                                   left: kAddressCardItemsPaddingV),
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: CsIcon(
-                                  (address.isDefault ?? false)
-                                      ? Icons.check_circle_outline_rounded
-                                      : null,
-                                  onTap: onDefaultIconTap,
-                                  color: Get.theme.colorScheme.onPrimary,
+                                  null,
                                 ),
                               ),
                             ),
@@ -88,9 +84,11 @@ class AddressItem extends GetView {
                           Expanded(
                             flex: 1,
                             child: CsIcon(
-                              Icons.add_location_alt_outlined,
+                              (address.isDefault ?? false)
+                                  ? Icons.check_circle_outline_rounded
+                                  : null,
                               onTap: onEditIconTap,
-                              color: Get.theme.colorScheme.onPrimary,
+                              color: Get.theme.colorScheme.secondary,
                             ),
                           ),
                         ],
