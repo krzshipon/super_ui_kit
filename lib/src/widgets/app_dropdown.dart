@@ -13,7 +13,7 @@ class CSDropDown extends StatelessWidget {
   final cornerRadius = 10.0;
   final String? error;
   final String? header;
-  final void Function(String?)? onchanged;
+  final void Function(String?)? onValueChange;
   final List<String> items;
   final Function()? onEdit;
   final TextEditingController? editingController;
@@ -24,7 +24,7 @@ class CSDropDown extends StatelessWidget {
     Key? key,
     this.error,
     this.header,
-    this.onchanged,
+    this.onValueChange,
     this.onEdit,
     this.editingController,
     this.value,
@@ -76,7 +76,7 @@ class CSDropDown extends StatelessWidget {
                       ? dropdownItems.first.value
                       : value ?? dropdownItems.first.value,
                   items: dropdownItems,
-                  onChanged: onchanged,
+                  onChanged: onValueChange,
                 ),
                 if (error != null) verticalSpaceSmall,
                 if (error != null)
