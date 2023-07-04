@@ -17,18 +17,18 @@ class CSDropDown extends StatelessWidget {
   final void Function(String?)? onchanged;
   final List<String> items;
   final Function()? onEdit;
-  final TextEditingController editingController;
+  final TextEditingController? editingController;
   final String? value;
 
-  const CSDropDown({
+  const CSDropDown(
+    this.items, {
     Key? key,
     this.error,
     this.header,
     this.editable = false,
     this.onchanged,
-    required this.items,
     this.onEdit,
-    required this.editingController,
+    this.editingController,
     this.value,
   }) : super(key: key);
 
@@ -42,13 +42,13 @@ class CSDropDown extends StatelessWidget {
         .toList();
     menuItems.insert(
         0,
-      const DropdownMenuItem(
+        const DropdownMenuItem(
           value: kSelectionInstruction,
           child: CSText(kSelectionInstruction),
         ));
     menuItems.insert(
         menuItems.length,
-      const DropdownMenuItem(
+        const DropdownMenuItem(
           value: kOtherSelection,
           child: CSText(kOtherSelection),
         ));
@@ -87,14 +87,14 @@ class CSDropDown extends StatelessWidget {
                     color: Theme.of(context).colorScheme.error,
                     textType: TextType.label,
                   ),
-                if (editable)
+                if (editable && editingController != null)
                   (error == null) ? verticalSpaceRegular : verticalSpaceSmall,
-                if (editable)
+                if (editable && editingController != null)
                   CSInputField(
-                    controller: editingController,
+                    controller: editingController!,
                     inputType: TextInputType.text,
                   ),
-                (editable)
+                (editable && editingController != null)
                     ? verticalSpaceTiny
                     : (error == null)
                         ? verticalSpaceRegular
