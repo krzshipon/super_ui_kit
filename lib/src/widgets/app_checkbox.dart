@@ -16,8 +16,8 @@ class CsCheckbox extends GetView {
       mainAxisSize: MainAxisSize.min,
       children: [
         Checkbox(
-          value: controller.isDefault.value,
-          onChanged: controller.onDefaultCheck,
+          value: value,
+          onChanged: onChanged,
           activeColor: Get.theme.colorScheme.secondary,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
