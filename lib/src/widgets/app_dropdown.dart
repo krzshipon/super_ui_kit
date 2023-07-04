@@ -13,7 +13,6 @@ class CSDropDown extends StatelessWidget {
   final cornerRadius = 10.0;
   final String? error;
   final String? header;
-  final bool editable;
   final void Function(String?)? onchanged;
   final List<String> items;
   final Function()? onEdit;
@@ -25,7 +24,6 @@ class CSDropDown extends StatelessWidget {
     Key? key,
     this.error,
     this.header,
-    this.editable = false,
     this.onchanged,
     this.onEdit,
     this.editingController,
@@ -87,14 +85,14 @@ class CSDropDown extends StatelessWidget {
                     color: Theme.of(context).colorScheme.error,
                     textType: TextType.label,
                   ),
-                if (editable && editingController != null)
+                if (editingController != null)
                   (error == null) ? verticalSpaceRegular : verticalSpaceSmall,
-                if (editable && editingController != null)
+                if (editingController != null)
                   CSInputField(
                     controller: editingController!,
                     inputType: TextInputType.text,
                   ),
-                (editable && editingController != null)
+                (editingController != null)
                     ? verticalSpaceTiny
                     : (error == null)
                         ? verticalSpaceRegular
