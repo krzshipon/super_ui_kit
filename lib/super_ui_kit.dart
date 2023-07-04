@@ -4,6 +4,7 @@ export 'src/widgets/app_buttons.dart';
 export 'src/widgets/app_cards.dart';
 export 'src/widgets/app_divider.dart';
 export 'src/widgets/app_dropdown.dart';
+export 'src/widgets/app_checkbox.dart';
 export 'src/widgets/app_file_selector.dart';
 export 'src/widgets/app_header.dart';
 export 'src/widgets/app_input_field.dart';
@@ -17,7 +18,6 @@ export 'src/widgets/item_setting.dart';
 export 'src/widgets/item_profile.dart';
 export 'src/widgets/item_address.dart';
 
-
 export 'src/shared/app_colors.dart';
 export 'src/shared/app_sizes.dart';
 export 'src/shared/app_styles.dart';
@@ -25,7 +25,6 @@ export 'src/shared/app_ui_helpers.dart';
 export 'src/shared/app_breakpoints.dart';
 export 'src/shared/app_utils.dart';
 export 'src/shared/app_config.dart';
-
 
 export 'src/extensions/date_time_ext.dart';
 export 'src/extensions/build_context_ext.dart';
