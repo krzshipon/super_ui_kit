@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../shared/app_colors.dart';
 import '../shared/app_ui_helpers.dart';
@@ -82,7 +83,7 @@ class CSDropDown extends StatelessWidget {
                 if (error != null)
                   CSText(
                     error!,
-                    color: Theme.of(context).colorScheme.error,
+                    color: Get.theme.colorScheme.error,
                     textType: TextType.label,
                   ),
                 if (editingController != null)
