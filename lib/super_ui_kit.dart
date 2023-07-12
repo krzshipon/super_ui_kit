@@ -41,3 +41,4 @@ export 'package:intl/intl.dart';
 export 'package:responsive_framework/responsive_framework.dart' hide Condition;
 export 'package:get/get.dart';
 export 'package:get_storage/get_storage.dart';
+export 'package:auto_animated/auto_animated.dart';
