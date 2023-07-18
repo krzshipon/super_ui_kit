@@ -47,7 +47,7 @@ class CSFileSelector extends StatelessWidget {
                 (error == null) ? verticalSpaceRegular : verticalSpaceSmall,
                 CSIconButton(
                   icon: Icons.attach_file_sharp,
-                  ontap: ontap,
+                  onTap: ontap,
                 ),
                 verticalSpaceTiny
               ],

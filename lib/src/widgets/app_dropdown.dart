@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../shared/app_colors.dart';
 import '../shared/app_ui_helpers.dart';
@@ -13,22 +14,20 @@ class CSDropDown extends StatelessWidget {
   final cornerRadius = 10.0;
   final String? error;
   final String? header;
-  final bool editable;
-  final void Function(String?)? onchanged;
+  final void Function(String?)? onValueChange;
   final List<String> items;
   final Function()? onEdit;
-  final TextEditingController editingController;
+  final TextEditingController? editingController;
   final String? value;
 
-  const CSDropDown({
+  const CSDropDown(
+    this.items, {
     Key? key,
     this.error,
     this.header,
-    this.editable = false,
-    this.onchanged,
-    required this.items,
+    this.onValueChange,
     this.onEdit,
-    required this.editingController,
+    this.editingController,
     this.value,
   }) : super(key: key);
 
@@ -42,13 +41,13 @@ class CSDropDown extends StatelessWidget {
         .toList();
     menuItems.insert(
         0,
-      const DropdownMenuItem(
+        const DropdownMenuItem(
           value: kSelectionInstruction,
           child: CSText(kSelectionInstruction),
         ));
     menuItems.insert(
         menuItems.length,
-      const DropdownMenuItem(
+        const DropdownMenuItem(
           value: kOtherSelection,
           child: CSText(kOtherSelection),
         ));
@@ -78,23 +77,23 @@ class CSDropDown extends StatelessWidget {
                       ? dropdownItems.first.value
                       : value ?? dropdownItems.first.value,
                   items: dropdownItems,
-                  onChanged: onchanged,
+                  onChanged: onValueChange,
                 ),
                 if (error != null) verticalSpaceSmall,
                 if (error != null)
                   CSText(
                     error!,
-                    color: Theme.of(context).colorScheme.error,
+                    color: Get.theme.colorScheme.error,
                     textType: TextType.label,
                   ),
-                if (editable)
+                if (editingController != null)
                   (error == null) ? verticalSpaceRegular : verticalSpaceSmall,
-                if (editable)
+                if (editingController != null)
                   CSInputField(
-                    controller: editingController,
+                    controller: editingController!,
                     inputType: TextInputType.text,
                   ),
-                (editable)
+                (editingController != null)
                     ? verticalSpaceTiny
                     : (error == null)
                         ? verticalSpaceRegular

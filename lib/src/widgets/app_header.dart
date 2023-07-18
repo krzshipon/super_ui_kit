@@ -27,17 +27,20 @@ class CSHeader extends StatelessWidget {
       children: [
         Expanded(
           flex: 2,
-          child: showLeading? Center(
-              child: CSIconButton(
-            icon: (headerType == HeaderType.home)
-                ? Icons.home_sharp
-                : Icons.arrow_back_sharp,
-            ontap: (onLeftIconClick != null)
-                ? onLeftIconClick
-                : (headerType == HeaderType.home)
-                    ? null
-                    : () => Navigator.of(context).pop(),
-          ),): const SizedBox.shrink(),
+          child: showLeading
+              ? Center(
+                  child: CSIconButton(
+                    icon: (headerType == HeaderType.home)
+                        ? Icons.home_sharp
+                        : Icons.arrow_back_sharp,
+                    onTap: (onLeftIconClick != null)
+                        ? onLeftIconClick
+                        : (headerType == HeaderType.home)
+                            ? null
+                            : () => Navigator.of(context).pop(),
+                  ),
+                )
+              : const SizedBox.shrink(),
         ),
         Expanded(
           flex: 6,
