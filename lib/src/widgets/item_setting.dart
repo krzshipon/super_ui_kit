@@ -42,7 +42,7 @@ class CsSettingItem extends GetView {
               padding: EdgeInsets.symmetric(
                   vertical: kpCardPaddingS, horizontal: cornerRadius),
               cardType: CSCardType.item,
-              childrens: [
+              children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

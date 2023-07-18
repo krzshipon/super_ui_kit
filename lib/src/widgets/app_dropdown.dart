@@ -69,7 +69,7 @@ class CSDropDown extends StatelessWidget {
           Expanded(
             child: CSCard(
               margin: EdgeInsets.zero,
-              childrens: [
+              children: [
                 DropdownButtonFormField(
                   style: Theme.of(context).textTheme.bodyLarge,
                   dropdownColor: kCardBackgroundColor,
