@@ -129,7 +129,7 @@ class CSIconButton extends StatelessWidget {
           : (text == null)
               ? const EdgeInsets.all(7)
               : const EdgeInsets.fromLTRB(20, 10, 20, 10),
-      childrens: [
+      children: [
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [

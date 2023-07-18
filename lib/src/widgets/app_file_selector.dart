@@ -29,7 +29,7 @@ class CSFileSelector extends StatelessWidget {
           Expanded(
             child: CSCard(
               margin: EdgeInsets.zero,
-              childrens: [
+              children: [
                 verticalSpaceSmall,
                 Align(
                   alignment: Alignment.centerLeft,

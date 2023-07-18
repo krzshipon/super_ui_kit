@@ -20,7 +20,7 @@ const int kCardSplashAlpha = 45;
 
 class CSCard extends StatelessWidget {
   final void Function()? onTap;
-  final List<Widget> childrens;
+  final List<Widget> children;
   final CSCardType cardType;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
@@ -31,7 +31,7 @@ class CSCard extends StatelessWidget {
   const CSCard(
       {super.key,
       this.onTap,
-      required this.childrens,
+      required this.children,
       this.cardType = CSCardType.item,
       this.padding,
       this.margin,
@@ -87,7 +87,7 @@ class CSCard extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: mainAxisAlignment,
-                  children: childrens,
+                  children: children,
                 ),
               ),
             ),

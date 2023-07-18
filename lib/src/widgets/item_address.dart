@@ -7,7 +7,6 @@ import 'package:super_ui_kit/src/widgets/app_icon.dart';
 
 import '../models/address.dart';
 import '../shared/app_ui_helpers.dart';
-import 'app_buttons.dart';
 import 'app_cards.dart';
 import 'app_text.dart';
 
@@ -44,7 +43,7 @@ class AddressItem extends GetView {
                 radius: cornerRadius,
                 padding: EdgeInsets.zero,
                 cardType: CSCardType.item,
-                childrens: [
+                children: [
                   SizedBox(
                     width: double.infinity,
                     height: kAddressCardItemHeaderHeight,
