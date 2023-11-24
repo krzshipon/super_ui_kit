@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-final ThemeData baseLightTheme = ThemeData.light(useMaterial3: true);
-final ThemeData baseDarkTheme = ThemeData.dark(useMaterial3: true);
+final ThemeData baseLightTheme = ThemeData.light(useMaterial3: false);
+final ThemeData baseDarkTheme = ThemeData.dark(useMaterial3: false);
 final TextTheme baseTextTheme = GoogleFonts.secularOneTextTheme();
 final TextTheme baseLightTextTheme = baseTextTheme.copyWith(
   displayLarge: baseTextTheme.displayLarge?.copyWith(color: Colors.white),
