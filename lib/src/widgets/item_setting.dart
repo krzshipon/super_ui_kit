@@ -73,7 +73,7 @@ class CsSettingItem extends GetView {
                         flex: 1,
                         child: Icon(
                           (showTrailing) ? Icons.arrow_forward : null,
-                          color: Get.theme.colorScheme.primary,
+                          color: Get.theme.colorScheme.secondary,
                         ))
                   ],
                 ),

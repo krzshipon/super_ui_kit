@@ -52,7 +52,7 @@ class ProfileItem extends GetView {
                           alignment: Alignment.centerLeft,
                           child: Icon(
                             iconData,
-                            color: Get.theme.colorScheme.primary,
+                            color: Get.theme.colorScheme.secondary,
                           ),
                         ),
                       ),
@@ -71,7 +71,7 @@ class ProfileItem extends GetView {
                         flex: 1,
                         child: Icon(
                           null,
-                          color: Get.theme.colorScheme.primary,
+                          color: Get.theme.colorScheme.secondary,
                         ))
                   ],
                 ),
