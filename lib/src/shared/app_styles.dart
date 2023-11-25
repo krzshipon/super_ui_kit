@@ -4,23 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 final ThemeData baseLightTheme = ThemeData.light(useMaterial3: false);
 final ThemeData baseDarkTheme = ThemeData.dark(useMaterial3: false);
 final TextTheme baseTextTheme = GoogleFonts.secularOneTextTheme();
-final TextTheme baseLightTextTheme = baseTextTheme.copyWith(
-  displayLarge: baseTextTheme.displayLarge?.copyWith(color: Colors.white),
-  displayMedium: baseTextTheme.displayMedium?.copyWith(color: Colors.white),
-  displaySmall: baseTextTheme.displaySmall?.copyWith(color: Colors.white),
-  headlineLarge: baseTextTheme.headlineLarge?.apply(color: Colors.white),
-  headlineMedium: baseTextTheme.headlineMedium?.copyWith(color: Colors.white),
-  headlineSmall: baseTextTheme.headlineSmall?.copyWith(color: Colors.white),
-  titleLarge: baseTextTheme.titleLarge?.copyWith(color: Colors.white),
-  titleMedium: baseTextTheme.titleMedium?.copyWith(color: Colors.white),
-  titleSmall: baseTextTheme.titleSmall?.copyWith(color: Colors.white),
-  bodyLarge: baseTextTheme.bodyLarge?.copyWith(color: Colors.white),
-  bodyMedium: baseTextTheme.bodyMedium?.copyWith(color: Colors.white),
-  bodySmall: baseTextTheme.bodySmall?.copyWith(color: Colors.white),
-  labelLarge: baseTextTheme.labelLarge?.copyWith(color: Colors.white),
-  labelMedium: baseTextTheme.labelMedium?.copyWith(color: Colors.white),
-  labelSmall: baseTextTheme.labelSmall?.copyWith(color: Colors.white),
-);
+final TextTheme baseLightTextTheme = baseTextTheme;
 final TextTheme baseDarkTextTheme = baseTextTheme.copyWith(
   displayLarge: baseTextTheme.displayLarge?.copyWith(color: Colors.white),
   displayMedium: baseTextTheme.displayMedium?.copyWith(color: Colors.white),
@@ -61,30 +45,30 @@ const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
   primary: Color(0xFF77c9d4),
   onPrimary: Colors.white,
-  primaryContainer: Color(0xFF004F56),
+  primaryContainer: Colors.white,
   onPrimaryContainer: Color(0xFF8EF2FF),
   secondary: Color(0xFF57BC90),
   onSecondary: Colors.white,
-  secondaryContainer: Color(0xFF005137),
-  onSecondaryContainer: Color(0xFF8AF8C5),
-  tertiary: Color(0xFFB3C5FF),
-  onTertiary: Color(0xFF002A76),
-  tertiaryContainer: Color(0xFF224290),
-  onTertiaryContainer: Color(0xFFDBE1FF),
+  secondaryContainer: Colors.white,
+  onSecondaryContainer: Color(0xFF57BC90),
+  tertiary: Color(0xFFF1B950),
+  onTertiary: Colors.white,
+  tertiaryContainer: Colors.white,
+  onTertiaryContainer: Color(0xFFF1B950),
   error: Color(0xFFD83F87),
-  errorContainer: Color(0xFF93000A),
+  errorContainer: Colors.white,
   onError: Colors.white,
-  onErrorContainer: Color(0xFFFFDAD6),
-  background: Color(0xFF3A485A),
-  onBackground: Color(0xFFD6E3FF),
-  surface: Color(0xFF001B3D),
-  onSurface: Color(0xFFD6E3FF),
-  surfaceVariant: Color(0xFF3F484A),
-  onSurfaceVariant: Color(0xFFBEC8CA),
+  onErrorContainer: Color(0xFFD83F87),
+  background: Color(0xFFE6E7E9),
+  onBackground: Color(0xFF222222),
+  surface: Color(0xFFE6E7E9),
+  onSurface: Color(0xFF222222),
+  surfaceVariant: Color(0xFFBEC8CA),
+  onSurfaceVariant: Color(0xFF222222),
   outline: Color(0xFF899294),
-  onInverseSurface: Color(0xFF001B3D),
-  inverseSurface: Color(0xFFD6E3FF),
-  inversePrimary: Color(0xFF006972),
+  onInverseSurface: Color(0xFFE6E7E9),
+  inverseSurface: Color(0xFF222222),
+  inversePrimary: Colors.white,
   shadow: Color(0xFF000000),
   surfaceTint: Color(0xFF4ED8E8),
 );
@@ -92,21 +76,21 @@ const lightColorScheme = ColorScheme(
 const darkColorScheme = ColorScheme(
   brightness: Brightness.dark,
   primary: Color(0xFF77c9d4),
-  onPrimary: Colors.white,
+  onPrimary: Color(0xFFD6E3FF),
   primaryContainer: Color(0xFF004F56),
-  onPrimaryContainer: Color(0xFF8EF2FF),
+  onPrimaryContainer: Color(0xFF77c9d4),
   secondary: Color(0xFF57BC90),
-  onSecondary: Colors.white,
+  onSecondary: Color(0xFFD6E3FF),
   secondaryContainer: Color(0xFF005137),
-  onSecondaryContainer: Color(0xFF8AF8C5),
-  tertiary: Color(0xFFB3C5FF),
-  onTertiary: Color(0xFF002A76),
+  onSecondaryContainer: Color(0xFF57BC90),
+  tertiary: Color(0xFFF1B950),
+  onTertiary: Colors.white,
   tertiaryContainer: Color(0xFF224290),
   onTertiaryContainer: Color(0xFFDBE1FF),
   error: Color(0xFFD83F87),
-  errorContainer: Color(0xFF93000A),
+  errorContainer: Color(0xFF004F56),
   onError: Colors.white,
-  onErrorContainer: Color(0xFFFFDAD6),
+  onErrorContainer: Color(0xFFD6E3FF),
   background: Color(0xFF3A485A),
   onBackground: Color(0xFFD6E3FF),
   surface: Color(0xFF001B3D),
@@ -125,10 +109,10 @@ IconThemeData appLightIconTheme =
     baseLightTheme.iconTheme.copyWith(color: lightColorScheme.secondary);
 
 IconThemeData appDarkIconTheme =
-    baseDarkTheme.iconTheme.copyWith(color: lightColorScheme.primary);
+    baseDarkTheme.iconTheme.copyWith(color: lightColorScheme.secondary);
 
 CardTheme appLightCardTheme =
-    baseLightTheme.cardTheme.copyWith(color: const Color(0xA6505E6E));
+    baseLightTheme.cardTheme.copyWith(color: Colors.white);
 CardTheme appDarkCardTheme =
     baseLightTheme.cardTheme.copyWith(color: const Color(0xA6505E6E));
 
