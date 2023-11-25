@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:super_ui_kit/super_ui_kit.dart';
 
@@ -12,10 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: appLightTheme,
       home: const MyHomePage(title: 'Super Ui Kit Demo Home Page'),
     );
   }
@@ -38,32 +37,112 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  bool _isDarkMode = false;
+
+  void _toggleTheme() {
+    setState(() {
+      _isDarkMode = !_isDarkMode;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: CSText(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    return CSHomeWidget(
+      child: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        children: [
+          verticalSpaceMedium,
+          CSHeader(
+            headerType: HeaderType.home,
+            title: "Example App",
+            trailing: CSIconButton(
+              icon: Get.theme.brightness == Brightness.light
+                  ? Icons.light_mode_sharp
+                  : Icons.dark_mode_sharp,
+              onTap: () => _toggleTheme(),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+          ),
+          verticalSpaceRegular,
+          CSItemHeader(title: "Item Header:"),
+          CSDivider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CSText.display("Display"),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CSText.headline("Headline"),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CSText.title("Title"),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CSText("Normal Text"),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CSText.label("Label"),
+            ],
+          ),
+          verticalSpaceSmall,
+          CSItemHeader(title: "Item Header:"),
+          CSDivider(),
+          verticalSpaceSmall,
+          CSCard(
+            children: [
+              CSText("General Card"),
+            ],
+          ),
+          verticalSpaceSmall,
+          CSItemHeader(title: "Item Header:"),
+          CSDivider(),
+          verticalSpaceSmall,
+          CsSettingItem(
+            iconData: Icons.settings,
+            title: "Settings Item",
+          ),
+          verticalSpaceSmall,
+          CSItemHeader(title: "Item Header:"),
+          CSDivider(),
+          verticalSpaceSmall,
+          CSButton(title: "Positive Filled Button"),
+          verticalSpaceSmall,
+          CSItemHeader(title: "Item Header:"),
+          CSDivider(),
+          verticalSpaceSmall,
+          CSButton.outline(title: "Positive Outlined Button"),
+          verticalSpaceSmall,
+          CSItemHeader(title: "Item Header:"),
+          CSDivider(),
+          verticalSpaceSmall,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CSTupleText(
+                text1: "Tuple",
+                text2: "Text",
+              ),
+            ],
+          ),
+          verticalSpaceRegular,
+          CSFileSelector(),
+          // CSDropDown(
+          //   ["Item 1", "Item 2"],
+          //   value: "Item 1",
+          // ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
