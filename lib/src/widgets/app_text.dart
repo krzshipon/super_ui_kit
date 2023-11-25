@@ -89,13 +89,14 @@ class CSText extends StatelessWidget {
                     : (textType == TextType.label)
                         ? textTheme.labelMedium
                         : textTheme.bodyMedium);
-    textStyle?.copyWith(color: color, fontSize: fontSize);
 
     return Text(
       text,
       style: textStyle?.copyWith(
         decoration: decoration,
         decorationStyle: TextDecorationStyle.solid,
+        color: color,
+        fontSize: fontSize
       ),
       maxLines: maxLines,
       overflow: overflow,
