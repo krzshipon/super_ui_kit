@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: appLightTheme,
+      darkTheme: appDarkTheme,
       home: const MyHomePage(title: 'Super Ui Kit Demo Home Page'),
     );
   }
@@ -96,6 +97,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
           verticalSpaceSmall,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CSTupleText(
+                text1: "Tuple",
+                text2: "Text",
+              ),
+            ],
+          ),
+          verticalSpaceMedium,
           CSItemHeader(title: "Item Header:"),
           CSDivider(),
           verticalSpaceSmall,
@@ -126,14 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
           CSItemHeader(title: "Item Header:"),
           CSDivider(),
           verticalSpaceSmall,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CSTupleText(
-                text1: "Tuple",
-                text2: "Text",
-              ),
-            ],
+          CSInputField(
+            controller: TextEditingController(),
+            placeholder: 'Input...',
           ),
           verticalSpaceRegular,
           CSFileSelector(),

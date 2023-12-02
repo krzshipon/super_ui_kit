@@ -59,21 +59,27 @@ class CSInputField extends StatelessWidget {
           contentPadding:
               const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           filled: true,
-          fillColor: Colors.blueGrey,
+          fillColor: Theme.of(context).colorScheme.surfaceVariant,
           errorText: errorText,
           prefixIcon: leading,
           suffixIcon: trailing != null
               ? GestureDetector(onTap: trailingTapped, child: trailing)
               : null,
           border: circularBorder.copyWith(
-              borderSide: const BorderSide(color: Colors.blueGrey)),
+            borderSide:
+                BorderSide(color: Theme.of(context).colorScheme.secondary),
+          ),
           errorBorder: circularBorder.copyWith(
-              borderSide: const BorderSide(color: Colors.red)),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+          ),
           focusedBorder: circularBorder.copyWith(
-              borderSide:
-                  BorderSide(color: Theme.of(context).colorScheme.primary)),
+            borderSide:
+                BorderSide(color: Theme.of(context).colorScheme.secondary),
+          ),
           enabledBorder: circularBorder.copyWith(
-              borderSide: const BorderSide(color: Colors.blueGrey)),
+            borderSide:
+                BorderSide(color: Theme.of(context).colorScheme.surfaceVariant),
+          ),
         ),
         focusNode: focusNode,
       ),
