@@ -30,14 +30,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   bool _isDarkMode = false;
 
   void _toggleTheme() {
@@ -106,6 +98,41 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
+          verticalSpaceRegular,
+          CSItemHeader(title: "Icon with sizes:"),
+          CSDivider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.ideographic,
+            children: [
+              CsIcon(
+                Icons.android,
+                size: 10,
+              ),
+              CsIcon(
+                Icons.android,
+                size: 20,
+              ),
+              CsIcon(Icons.android),
+              CsIcon(
+                Icons.android,
+                size: 30,
+              ),
+              CsIcon(
+                Icons.android,
+                size: 40,
+              ),
+              CsIcon(
+                Icons.android,
+                size: 50,
+              ),
+              CsIcon(
+                Icons.android,
+                size: 60,
+              ),
+            ],
+          ),
           verticalSpaceMedium,
           CSItemHeader(title: "Item Header:"),
           CSDivider(),
@@ -147,6 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //   ["Item 1", "Item 2"],
           //   value: "Item 1",
           // ),
+          verticalSpaceLarge
         ],
       ),
     );

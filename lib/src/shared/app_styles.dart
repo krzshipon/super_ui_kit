@@ -4,7 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 final ThemeData baseLightTheme = ThemeData.light(useMaterial3: false);
 final ThemeData baseDarkTheme = ThemeData.dark(useMaterial3: false);
 final TextTheme baseTextTheme = GoogleFonts.secularOneTextTheme();
-final TextTheme baseLightTextTheme = baseTextTheme;
+final TextTheme baseLightTextTheme = baseTextTheme.copyWith(
+  labelLarge:
+      baseTextTheme.labelLarge?.copyWith(color: const Color(0xFF8593A4)),
+  labelMedium:
+      baseTextTheme.labelMedium?.copyWith(color: const Color(0xFF8593A4)),
+  labelSmall:
+      baseTextTheme.labelSmall?.copyWith(color: const Color(0xFF8593A4)),
+);
 final TextTheme baseDarkTextTheme = baseTextTheme.copyWith(
   displayLarge: baseTextTheme.displayLarge?.copyWith(color: Colors.white),
   displayMedium: baseTextTheme.displayMedium?.copyWith(color: Colors.white),
@@ -18,9 +25,12 @@ final TextTheme baseDarkTextTheme = baseTextTheme.copyWith(
   bodyLarge: baseTextTheme.bodyLarge?.copyWith(color: Colors.white),
   bodyMedium: baseTextTheme.bodyMedium?.copyWith(color: Colors.white),
   bodySmall: baseTextTheme.bodySmall?.copyWith(color: Colors.white),
-  labelLarge: baseTextTheme.labelLarge?.copyWith(color: Colors.white),
-  labelMedium: baseTextTheme.labelMedium?.copyWith(color: Colors.white),
-  labelSmall: baseTextTheme.labelSmall?.copyWith(color: Colors.white),
+  labelLarge:
+      baseTextTheme.labelLarge?.copyWith(color: const Color(0xFF8593A4)),
+  labelMedium:
+      baseTextTheme.labelMedium?.copyWith(color: const Color(0xFF8593A4)),
+  labelSmall:
+      baseTextTheme.labelSmall?.copyWith(color: const Color(0xFF8593A4)),
 );
 
 const seed = Color(0xff305055);
