@@ -22,14 +22,14 @@ class CSHomeWidget extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light.copyWith(
         //=====Status Bar Configs=====
-        statusBarColor: Theme.of(context).scaffoldBackgroundColor,
+        statusBarColor: Theme.of(context).appBarTheme.backgroundColor,
         statusBarIconBrightness:
             Theme.of(context).brightness == Brightness.light
                 ? Brightness.dark
                 : Brightness.light,
         //=====Navigation Bar Configs=====
         //this color must be equal to the WaterDropNavBar backgroundColor
-        systemNavigationBarColor: Theme.of(context).colorScheme.primary,
+        systemNavigationBarColor: Theme.of(context).navigationBarTheme.backgroundColor,
         systemNavigationBarIconBrightness:
             Theme.of(context).brightness == Brightness.light
                 ? Brightness.dark

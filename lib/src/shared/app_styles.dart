@@ -127,14 +127,28 @@ CardTheme appDarkCardTheme =
     baseLightTheme.cardTheme.copyWith(color: const Color(0xA6505E6E));
 
 ThemeData appLightTheme = baseLightTheme.copyWith(
-    colorScheme: lightColorScheme,
-    textTheme: baseLightTextTheme,
-    iconTheme: appLightIconTheme,
-    cardTheme: appLightCardTheme,
-    scaffoldBackgroundColor: lightColorScheme.background);
+  colorScheme: lightColorScheme,
+  textTheme: baseLightTextTheme,
+  iconTheme: appLightIconTheme,
+  cardTheme: appLightCardTheme,
+  scaffoldBackgroundColor: lightColorScheme.background,
+  appBarTheme: baseLightTheme.appBarTheme.copyWith(
+    backgroundColor: lightColorScheme.background,
+  ),
+  navigationBarTheme: baseLightTheme.navigationBarTheme.copyWith(
+    backgroundColor: lightColorScheme.background,
+  ),
+);
 ThemeData appDarkTheme = baseDarkTheme.copyWith(
-    colorScheme: darkColorScheme,
-    iconTheme: appDarkIconTheme,
-    textTheme: baseDarkTextTheme,
-    cardTheme: appDarkCardTheme,
-    scaffoldBackgroundColor: darkColorScheme.background);
+  colorScheme: darkColorScheme,
+  iconTheme: appDarkIconTheme,
+  textTheme: baseDarkTextTheme,
+  cardTheme: appDarkCardTheme,
+  scaffoldBackgroundColor: darkColorScheme.background,
+  appBarTheme: baseDarkTheme.appBarTheme.copyWith(
+    backgroundColor: darkColorScheme.background,
+  ),
+  navigationBarTheme: baseDarkTheme.navigationBarTheme.copyWith(
+    backgroundColor: darkColorScheme.background,
+  ),
+);
