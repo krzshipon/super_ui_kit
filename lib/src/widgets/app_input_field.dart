@@ -55,7 +55,7 @@ class CSInputField extends StatelessWidget {
         maxLines: isPassword ? 1 : maxLines,
         decoration: InputDecoration(
           labelText: placeholder,
-          labelStyle: Theme.of(context).textTheme.titleSmall,
+          labelStyle: Theme.of(context).textTheme.labelMedium,
           contentPadding:
               const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           filled: true,
