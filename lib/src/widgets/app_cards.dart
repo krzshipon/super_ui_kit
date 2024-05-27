@@ -20,6 +20,7 @@ const int kCardSplashAlpha = 45;
 
 class CSCard extends StatelessWidget {
   final void Function()? onTap;
+  final void Function()? onLongTap;
   final List<Widget> children;
   final CSCardType cardType;
   final EdgeInsetsGeometry? padding;
@@ -28,16 +29,18 @@ class CSCard extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final double? elevation;
 
-  const CSCard(
-      {super.key,
-      this.onTap,
-      required this.children,
-      this.cardType = CSCardType.item,
-      this.padding,
-      this.margin,
-      this.radius,
-      this.elevation = 7,
-      this.mainAxisAlignment = MainAxisAlignment.start});
+  const CSCard({
+    super.key,
+    this.onTap,
+    required this.children,
+    this.cardType = CSCardType.item,
+    this.padding,
+    this.margin,
+    this.radius,
+    this.elevation = 7,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.onLongTap,
+  });
   @override
   Widget build(BuildContext context) =>
       LayoutBuilder(builder: (context, constraints) {
@@ -69,6 +72,7 @@ class CSCard extends StatelessWidget {
                 .primary
                 .withAlpha(kCardSplashAlpha),
             onTap: onTap,
+            onLongPress: onLongTap,
             child: SizedBox(
               width: (cardType == CSCardType.form)
                   ? constraints.responsiveValue(
