@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:super_ui_kit/src/extensions/box_constraint_ext.dart';
 import 'package:super_ui_kit/src/extensions/build_context_ext.dart';
 
-enum CSCardType { item, form }
+enum CSCardType { item, form, listItem }
 
 const double kwCardWidthS = 250;
 const double kwCardWidthM = 400;
@@ -51,7 +51,12 @@ class CSCard extends StatelessWidget {
                           medium: kmCardMarginM,
                           large: kmCardMarginL) ??
                       kmCardMarginL)
-                  : const EdgeInsets.all(kmCardMarginS),
+                  : (cardType == CSCardType.listItem)
+                      ? const EdgeInsets.symmetric(
+                          horizontal: kmCardMarginS,
+                          vertical: kmCardMarginS / 2,
+                        )
+                      : const EdgeInsets.all(kmCardMarginS),
           elevation: elevation,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
