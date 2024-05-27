@@ -168,6 +168,16 @@ class _MyHomePageState extends State<MyHomePage> {
             controller: TextEditingController(),
             placeholder: 'Input...',
           ),
+          // CSItemHeader(title: "Item Header:"),
+          // CSDivider(),
+          // verticalSpaceSmall,
+          // CSButton.outline(
+          //   title: "Show Dialog",
+          //   onTap: () => Get.showDialog(
+          //     "This is a dialog",
+          //     title: "Dialog Title",
+          //   ),
+          // ),
           verticalSpaceRegular,
           CSFileSelector(),
           // CSDropDown(
