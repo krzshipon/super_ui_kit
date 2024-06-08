@@ -46,9 +46,9 @@ class CSInputField extends StatelessWidget {
     return SizedBox(
       height: (maxLines != null && maxLines! > 1)
           ? null
-          : (errorText == null)
-              ? height
-              : height + heightExtensionForError,
+          : (errorText != null && enabled)
+              ? height + heightExtensionForError
+              : height,
       child: TextField(
         autocorrect: false,
         enabled: enabled,
