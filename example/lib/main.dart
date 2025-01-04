@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: appLightTheme,
       darkTheme: appDarkTheme,
+      themeMode: ThemeMode.light,
       home: const MyHomePage(title: 'Super Ui Kit Demo Home Page'),
     );
   }
@@ -40,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return CSHomeWidget(
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -49,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             headerType: HeaderType.home,
             title: "Example App",
             trailing: CSIconButton(
-              icon: Get.theme.brightness == Brightness.light
+              icon: theme.brightness == Brightness.light
                   ? Icons.light_mode_sharp
                   : Icons.dark_mode_sharp,
               onTap: () => _toggleTheme(),
