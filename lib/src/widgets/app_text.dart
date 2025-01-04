@@ -12,18 +12,21 @@ class CSText extends StatelessWidget {
   final TextAlign? textAlign;
   final TextType textType;
   final TextDecoration? decoration;
+  final void Function()? onTap;
 
-  const CSText(this.text,
-      {Key? key,
-      this.color,
-      this.fontSize,
-      this.style,
-      this.maxLines,
-      this.textAlign,
-      this.overflow,
-      this.decoration,
-      this.textType = TextType.body})
-      : super(key: key);
+  const CSText(
+    this.text, {
+    Key? key,
+    this.color,
+    this.fontSize,
+    this.style,
+    this.maxLines,
+    this.textAlign,
+    this.overflow,
+    this.decoration,
+    this.textType = TextType.body,
+    this.onTap,
+  }) : super(key: key);
 
   const CSText.display(
     this.text, {
@@ -36,6 +39,7 @@ class CSText extends StatelessWidget {
     this.style,
     this.decoration,
     this.textType = TextType.display,
+    this.onTap,
   });
   const CSText.headline(
     this.text, {
@@ -48,6 +52,7 @@ class CSText extends StatelessWidget {
     this.style,
     this.decoration,
     this.textType = TextType.headline,
+    this.onTap,
   });
 
   const CSText.title(
@@ -61,6 +66,7 @@ class CSText extends StatelessWidget {
     this.style,
     this.decoration,
     this.textType = TextType.title,
+    this.onTap,
   });
 
   const CSText.label(
@@ -74,6 +80,7 @@ class CSText extends StatelessWidget {
     this.fontSize,
     this.decoration,
     this.textType = TextType.label,
+    this.onTap,
   });
 
   @override
@@ -89,17 +96,20 @@ class CSText extends StatelessWidget {
                     : (textType == TextType.label)
                         ? textTheme.labelMedium
                         : textTheme.bodyMedium);
-    textStyle?.copyWith(color: color, fontSize: fontSize);
 
-    return Text(
-      text,
-      style: textStyle?.copyWith(
-        decoration: decoration,
-        decorationStyle: TextDecorationStyle.solid,
-      ),
-      maxLines: maxLines,
-      overflow: overflow,
-      textAlign: textAlign,
-    );
+    return InkWell(
+        splashColor: Colors.transparent,
+        onTap: onTap,
+        child: Text(
+          text,
+          style: textStyle?.copyWith(
+              decoration: decoration,
+              decorationStyle: TextDecorationStyle.solid,
+              color: color,
+              fontSize: fontSize),
+          maxLines: maxLines,
+          overflow: overflow,
+          textAlign: textAlign,
+        ));
   }
 }

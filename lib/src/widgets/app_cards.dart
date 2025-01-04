@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:super_ui_kit/src/extensions/box_constraint_ext.dart';
 import 'package:super_ui_kit/src/extensions/build_context_ext.dart';
 
-enum CSCardType { item, form }
+enum CSCardType { item, form, listItem }
 
 const double kwCardWidthS = 250;
 const double kwCardWidthM = 400;
@@ -20,6 +20,7 @@ const int kCardSplashAlpha = 45;
 
 class CSCard extends StatelessWidget {
   final void Function()? onTap;
+  final void Function()? onLongTap;
   final List<Widget> children;
   final CSCardType cardType;
   final EdgeInsetsGeometry? padding;
@@ -28,16 +29,18 @@ class CSCard extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final double? elevation;
 
-  const CSCard(
-      {super.key,
-      this.onTap,
-      required this.children,
-      this.cardType = CSCardType.item,
-      this.padding,
-      this.margin,
-      this.radius,
-      this.elevation = 7,
-      this.mainAxisAlignment = MainAxisAlignment.start});
+  const CSCard({
+    super.key,
+    this.onTap,
+    required this.children,
+    this.cardType = CSCardType.item,
+    this.padding,
+    this.margin,
+    this.radius,
+    this.elevation = 7,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.onLongTap,
+  });
   @override
   Widget build(BuildContext context) =>
       LayoutBuilder(builder: (context, constraints) {
@@ -51,7 +54,12 @@ class CSCard extends StatelessWidget {
                           medium: kmCardMarginM,
                           large: kmCardMarginL) ??
                       kmCardMarginL)
-                  : const EdgeInsets.all(kmCardMarginS),
+                  : (cardType == CSCardType.listItem)
+                      ? const EdgeInsets.symmetric(
+                          horizontal: kmCardMarginS,
+                          vertical: kmCardMarginS / 2,
+                        )
+                      : const EdgeInsets.all(kmCardMarginS),
           elevation: elevation,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -64,6 +72,7 @@ class CSCard extends StatelessWidget {
                 .primary
                 .withAlpha(kCardSplashAlpha),
             onTap: onTap,
+            onLongPress: onLongTap,
             child: SizedBox(
               width: (cardType == CSCardType.form)
                   ? constraints.responsiveValue(

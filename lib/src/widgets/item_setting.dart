@@ -54,7 +54,6 @@ class CsSettingItem extends GetView {
                           alignment: Alignment.centerLeft,
                           child: Icon(
                             iconData,
-                            color: Get.theme.colorScheme.primary,
                           ),
                         ),
                       ),
@@ -73,7 +72,6 @@ class CsSettingItem extends GetView {
                         flex: 1,
                         child: Icon(
                           (showTrailing) ? Icons.arrow_forward : null,
-                          color: Get.theme.colorScheme.primary,
                         ))
                   ],
                 ),

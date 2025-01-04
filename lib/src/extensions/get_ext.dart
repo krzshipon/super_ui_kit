@@ -69,6 +69,7 @@ extension AppDialog on GetInterface {
               height: (dialogType == DialogType.success) ? 40 : 35,
               repeat: true,
             ),
+            verticalSpaceTiny,
             CSText(
               bodyText,
               color: Get.theme.colorScheme.secondary,
