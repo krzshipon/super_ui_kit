@@ -1,10 +1,5 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
 import 'package:super_ui_kit/src/widgets/app_icon.dart';
-
 import '../models/address.dart';
 import '../shared/app_ui_helpers.dart';
 import 'app_cards.dart';
@@ -14,9 +9,8 @@ const kAddressCardItemCornerRadius = 10.0;
 const kAddressCardItemsPaddingV = 10.0;
 const kAddressCardItemHeaderHeight = 35.0;
 
-class AddressItem extends GetView {
-  final cornerRadius = 10.0;
-
+class AddressItem extends StatelessWidget {
+  final double cornerRadius = 10.0;
   final CsAddress address;
   final Function()? onTap;
   final Function()? onDefaultIconTap;
@@ -24,13 +18,16 @@ class AddressItem extends GetView {
 
   const AddressItem(
     this.address, {
-    super.key,
+    Key? key,
     this.onTap,
     this.onDefaultIconTap,
     this.onEditIconTap,
-  });
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -48,8 +45,9 @@ class AddressItem extends GetView {
                     width: double.infinity,
                     height: kAddressCardItemHeaderHeight,
                     child: DecoratedBox(
-                      decoration:
-                          BoxDecoration(color: Get.theme.colorScheme.primary),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.primary,
+                      ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -75,7 +73,7 @@ class AddressItem extends GetView {
                                 alignment: Alignment.center,
                                 child: CSText.headline(
                                   address.label ?? '',
-                                  color: Get.theme.colorScheme.onPrimary,
+                                  color: theme.colorScheme.onPrimary,
                                 ),
                               ),
                             ),
@@ -87,7 +85,7 @@ class AddressItem extends GetView {
                                   ? Icons.check_circle_outline_rounded
                                   : null,
                               onTap: onEditIconTap,
-                              color: Get.theme.colorScheme.onPrimary,
+                              color: theme.colorScheme.onPrimary,
                             ),
                           ),
                         ],
@@ -100,9 +98,9 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 1,
-                          child: CSText("address_label_name".tr),
+                          child: CSText("Name"),
                         ),
                         Expanded(
                           flex: 2,
@@ -116,9 +114,9 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 1,
-                          child: CSText("address_label_mobile".tr),
+                          child: CSText("Mobile"),
                         ),
                         Expanded(
                           flex: 2,
@@ -132,9 +130,9 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 1,
-                          child: CSText("address_label_division".tr),
+                          child: CSText("Division"),
                         ),
                         Expanded(
                           flex: 2,
@@ -148,9 +146,9 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 1,
-                          child: CSText("address_label_city".tr),
+                          child: CSText("City"),
                         ),
                         Expanded(
                           flex: 2,
@@ -164,9 +162,9 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 1,
-                          child: CSText("address_label_area".tr),
+                          child: CSText("Area"),
                         ),
                         Expanded(
                           flex: 2,
@@ -180,9 +178,9 @@ class AddressItem extends GetView {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 1,
-                          child: CSText("address_label_addressLine".tr),
+                          child: CSText("Address Line"),
                         ),
                         Expanded(
                           flex: 2,

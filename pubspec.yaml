@@ -4,19 +4,17 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^4.0.4
-  intl: ^0.17.0
-  lottie: ^2.0.0
-  responsive_framework: ^0.2.0
-  get: ^4.6.5
-  auto_animated: ^3.1.0
-  get_storage: ^2.1.1
+  auto_animated: ^3.2.0
+  google_fonts: ^6.2.1
+  responsive_framework: ^1.5.1
+  intl: ^0.20.1
+  lottie: ^3.3.0
 
 dev_dependencies:
   flutter_test:
@@ -26,4 +24,7 @@ dev_dependencies:
 flutter:
   assets:
     - google_fonts/
-    - assets/animations/
+    - assets/animations/anim_dialog_success.json
+    - assets/animations/anim_dialog_error.json
+    - assets/animations/anim_dialog_alert.json
+    - assets/animations/anim_dialog_info.json
