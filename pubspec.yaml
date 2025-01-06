@@ -14,6 +14,7 @@ dependencies:
   google_fonts: ^6.2.1
   responsive_framework: ^1.5.1
   intl: ^0.20.1
+  lottie: ^3.3.0
 
 dev_dependencies:
   flutter_test:
@@ -23,4 +24,7 @@ dev_dependencies:
 flutter:
   assets:
     - google_fonts/
-    - assets/animations/
+    - assets/animations/anim_dialog_success.json
+    - assets/animations/anim_dialog_error.json
+    - assets/animations/anim_dialog_alert.json
+    - assets/animations/anim_dialog_info.json
