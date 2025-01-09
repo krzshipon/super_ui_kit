@@ -58,7 +58,7 @@ class CSAddressItem extends StatelessWidget {
                     height: kAddressCardItemHeaderHeight,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.primary,
+                        color: theme.colorScheme.secondary,
                       ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
