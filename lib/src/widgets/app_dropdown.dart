@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../shared/app_colors.dart';
 import '../shared/app_ui_helpers.dart';
 import 'app_cards.dart';
 import 'app_input_field.dart';
 import 'app_text.dart';
 
 class CSDropDown extends StatelessWidget {
-  static const kSelectionInstruction = 'Please Select';
-  static const kOtherSelection = 'Other';
-
+  final String selectionInstruction;
+  final String otherSelection;
   final cornerRadius = 10.0;
   final String? error;
   final String? header;
@@ -19,16 +17,17 @@ class CSDropDown extends StatelessWidget {
   final TextEditingController? editingController;
   final String? value;
 
-  const CSDropDown(
-    this.items, {
-    Key? key,
-    this.error,
-    this.header,
-    this.onValueChange,
-    this.onEdit,
-    this.editingController,
-    this.value,
-  }) : super(key: key);
+  const CSDropDown(this.items,
+      {Key? key,
+      this.error,
+      this.header,
+      this.onValueChange,
+      this.onEdit,
+      this.editingController,
+      this.value,
+      this.selectionInstruction = 'Please Select',
+      this.otherSelection = 'Other'})
+      : super(key: key);
 
   List<DropdownMenuItem<String>> get dropdownItems {
     items.sort(((a, b) => a.compareTo(b)));
@@ -40,15 +39,15 @@ class CSDropDown extends StatelessWidget {
         .toList();
     menuItems.insert(
         0,
-        const DropdownMenuItem(
-          value: kSelectionInstruction,
-          child: CSText(kSelectionInstruction),
+        DropdownMenuItem(
+          value: selectionInstruction,
+          child: CSText(selectionInstruction),
         ));
     menuItems.insert(
         menuItems.length,
-        const DropdownMenuItem(
-          value: kOtherSelection,
-          child: CSText(kOtherSelection),
+        DropdownMenuItem(
+          value: otherSelection,
+          child: CSText(otherSelection),
         ));
     return menuItems;
   }
@@ -73,7 +72,7 @@ class CSDropDown extends StatelessWidget {
               children: [
                 DropdownButtonFormField(
                   style: Theme.of(context).textTheme.bodyLarge,
-                  dropdownColor: kCardBackgroundColor,
+                  dropdownColor: Theme.of(context).cardTheme.color,
                   value: value?.isEmpty ?? true
                       ? dropdownItems.first.value
                       : value ?? dropdownItems.first.value,

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:super_ui_kit/super_ui_kit.dart';
 
-class ProfileItem extends StatelessWidget {
+class CSProfileItem extends StatelessWidget {
   final double cornerRadius = 10.0;
   final String? header;
   final IconData iconData;
   final String title;
   final Function()? onTap;
 
-  const ProfileItem({
+  const CSProfileItem({
     Key? key,
     required this.iconData,
     required this.title,

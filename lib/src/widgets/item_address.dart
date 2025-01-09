@@ -9,19 +9,31 @@ const kAddressCardItemCornerRadius = 10.0;
 const kAddressCardItemsPaddingV = 10.0;
 const kAddressCardItemHeaderHeight = 35.0;
 
-class AddressItem extends StatelessWidget {
+class CSAddressItem extends StatelessWidget {
   final double cornerRadius = 10.0;
   final CsAddress address;
   final Function()? onTap;
   final Function()? onDefaultIconTap;
   final Function()? onEditIconTap;
+  final String nameLabel;
+  final String mobileLabel;
+  final String divisionLabel;
+  final String cityLabel;
+  final String areaLabel;
+  final String addressLineLabel;
 
-  const AddressItem(
+  const CSAddressItem(
     this.address, {
     Key? key,
     this.onTap,
     this.onDefaultIconTap,
     this.onEditIconTap,
+    this.nameLabel = 'Name',
+    this.mobileLabel = 'Mobile',
+    this.divisionLabel = 'Division',
+    this.cityLabel = 'City',
+    this.areaLabel = 'Area',
+    this.addressLineLabel = 'Address Line',
   }) : super(key: key);
 
   @override
@@ -98,9 +110,9 @@ class AddressItem extends StatelessWidget {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Name"),
+                          child: CSText(nameLabel),
                         ),
                         Expanded(
                           flex: 2,
@@ -114,9 +126,9 @@ class AddressItem extends StatelessWidget {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Mobile"),
+                          child: CSText(mobileLabel),
                         ),
                         Expanded(
                           flex: 2,
@@ -130,9 +142,9 @@ class AddressItem extends StatelessWidget {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Division"),
+                          child: CSText(divisionLabel),
                         ),
                         Expanded(
                           flex: 2,
@@ -146,9 +158,9 @@ class AddressItem extends StatelessWidget {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("City"),
+                          child: CSText(cityLabel),
                         ),
                         Expanded(
                           flex: 2,
@@ -162,9 +174,9 @@ class AddressItem extends StatelessWidget {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Area"),
+                          child: CSText(areaLabel),
                         ),
                         Expanded(
                           flex: 2,
@@ -178,9 +190,9 @@ class AddressItem extends StatelessWidget {
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Address Line"),
+                          child: CSText(addressLineLabel),
                         ),
                         Expanded(
                           flex: 2,

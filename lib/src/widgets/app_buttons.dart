@@ -6,7 +6,7 @@ import 'app_text.dart';
 
 enum ButtonType { positive, negative }
 
-const double kpButtonProgressbarPadding = 5;
+const double kpButtonProgressBarPadding = 5;
 
 class CSButton extends StatelessWidget {
   final String title;

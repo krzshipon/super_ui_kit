@@ -1,11 +1,11 @@
 //Elevation levels
-const double kElevationLevelZero = 0;
-const double kElevationLevelLow = 2;
-const double kElevationLevelMedium = 5;
-const double kElevationLevelHigh = 7;
-const double kElevationLevelHighest = 10;
+const double kElevationLevelZero = 0; // Flat surfaces
+const double kElevationLevelLow = 2; // Raised buttons, cards (resting)
+const double kElevationLevelMedium = 6; // Floating Action Button (resting)
+const double kElevationLevelHigh = 8; // Hover states, modals
+const double kElevationLevelHighest = 12; // Pressed states, tooltips
 
-//Button/ InputFields prperties
+//Button/ InputFields properties
 const double kButtonOrInputFieldWidthMobile = 250;
 const double kButtonOrInputFieldWidthDesktopAndWeb = 270;
 

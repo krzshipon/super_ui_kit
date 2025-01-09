@@ -63,7 +63,7 @@ class CSInputField extends StatelessWidget {
           contentPadding:
               const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           filled: true,
-          fillColor: Theme.of(context).colorScheme.surfaceVariant,
+          fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
           errorText: errorText,
           prefixIcon: leading,
           suffixIcon: trailing != null
@@ -81,8 +81,8 @@ class CSInputField extends StatelessWidget {
                 BorderSide(color: Theme.of(context).colorScheme.secondary),
           ),
           enabledBorder: circularBorder.copyWith(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.surfaceVariant),
+            borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.surfaceContainerHighest),
           ),
         ),
         focusNode: focusNode,

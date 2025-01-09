@@ -13,8 +13,13 @@ class CSItemHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: leftPadding),
-      child:
-          Align(alignment: Alignment.centerLeft, child: CSText(title, style: Theme.of(context).textTheme.bodySmall,)),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: CSText(
+          title,
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+      ),
     );
   }
 }

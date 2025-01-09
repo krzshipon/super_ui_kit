@@ -10,11 +10,16 @@ import 'app_text.dart';
 class CSFileSelector extends StatelessWidget {
   final String? error;
   final String fileName;
-  final Function()? ontap;
+  final Function()? onTap;
+  final String header;
 
-  const CSFileSelector(
-      {Key? key, this.error, this.fileName = 'No file selected', this.ontap})
-      : super(key: key);
+  const CSFileSelector({
+    Key? key,
+    this.error,
+    this.fileName = 'No file selected',
+    this.onTap,
+    this.header = 'Select File',
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +27,9 @@ class CSFileSelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Padding(
-            padding: EdgeInsets.only(left: cornerRadius),
-            child: CSItemHeader(title: 'Select File')),
+        Padding(
+            padding: const EdgeInsets.only(left: cornerRadius),
+            child: CSItemHeader(title: header)),
         Row(children: [
           Expanded(
             child: CSCard(
@@ -47,7 +52,7 @@ class CSFileSelector extends StatelessWidget {
                 (error == null) ? verticalSpaceRegular : verticalSpaceSmall,
                 CSIconButton(
                   icon: Icons.attach_file_sharp,
-                  onTap: ontap,
+                  onTap: onTap,
                 ),
                 verticalSpaceTiny
               ],
