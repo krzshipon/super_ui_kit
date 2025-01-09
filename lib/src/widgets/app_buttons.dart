@@ -99,6 +99,7 @@ class CSButton extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 350),
         height: height,
+        width: width,
         alignment: Alignment.center,
         decoration: !isOutlined
             ? BoxDecoration(
@@ -121,33 +122,49 @@ class CSButton extends StatelessWidget {
                   width: 1,
                 ),
               ),
-        child: !isBusy
-            ? Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (leading != null) leading!,
-                  if (leading != null) const SizedBox(width: 5),
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight:
-                              !isOutlined ? FontWeight.bold : FontWeight.w400,
-                          color: !isOutlined
+        child: Material(
+          color: Colors.transparent, //For making sure ripple effect is visible
+          borderRadius: BorderRadius.circular(cornerRadius),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(cornerRadius),
+            onTap: !isDisabled ? onTap : null,
+            child: Container(
+              width: width,
+              alignment: Alignment.center,
+              child: !isBusy
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (leading != null) leading!,
+                        if (leading != null) const SizedBox(width: 5),
+                        Text(
+                          title,
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    fontWeight: !isOutlined
+                                        ? FontWeight.bold
+                                        : FontWeight.w400,
+                                    color: !isOutlined
+                                        ? colorScheme.onPrimary
+                                        : colorScheme.onSurface,
+                                  ),
+                        ),
+                      ],
+                    )
+                  : Transform.scale(
+                      scale: 0.7,
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(
+                          !isOutlined
                               ? colorScheme.onPrimary
                               : colorScheme.onSurface,
                         ),
-                  ),
-                ],
-              )
-            : Transform.scale(
-                scale: 0.7,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation(
-                    !isOutlined ? colorScheme.onPrimary : colorScheme.onSurface,
-                  ),
-                  strokeWidth: 8,
-                ),
-              ),
+                        strokeWidth: 8,
+                      ),
+                    ),
+            ),
+          ),
+        ),
       ),
     );
   }
