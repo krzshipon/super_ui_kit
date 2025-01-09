@@ -1,14 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:super_ui_kit/super_ui_kit.dart';
 
+/// A customizable widget for displaying setting-related items in a card layout.
+///
+/// This widget displays an icon, a title, and an optional trailing arrow. It supports
+/// tap interactions and integrates seamlessly with the app's theme.
 class CsSettingItem extends StatelessWidget {
-  final double cornerRadius = 10.0;
+  /// The corner radius of the setting item card.
+  final double cornerRadius;
+
+  /// The optional header text displayed above the setting item.
   final String? header;
+
+  /// The icon to display in the setting item.
   final IconData iconData;
+
+  /// The title text to display in the setting item.
   final String title;
+
+  /// Callback function triggered when the setting item is tapped.
   final Function()? onTap;
+
+  /// Whether to show a trailing arrow icon.
+  /// Default: `true`.
   final bool showTrailing;
 
+  /// Creates a customizable setting item widget.
+  ///
+  /// Parameters:
+  /// - `iconData`: The icon to display in the setting item.
+  /// - `title`: The title text to display in the setting item.
+  /// - `header`: The optional header text displayed above the setting item.
+  /// - `onTap`: Callback function triggered when the setting item is tapped.
+  /// - `showTrailing`: Whether to show a trailing arrow icon.
   const CsSettingItem({
     Key? key,
     required this.iconData,
@@ -16,7 +40,8 @@ class CsSettingItem extends StatelessWidget {
     this.header,
     this.onTap,
     this.showTrailing = true,
-  }) : super(key: key);
+  })  : cornerRadius = 10.0,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +49,7 @@ class CsSettingItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
+        // Display the header if provided
         if (header != null)
           Padding(
             padding: EdgeInsets.only(left: kmCardMarginS + cornerRadius),
@@ -52,6 +78,7 @@ class CsSettingItem extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      // Icon
                       Expanded(
                         flex: 1,
                         child: Padding(
@@ -62,6 +89,7 @@ class CsSettingItem extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // Title
                       Expanded(
                         flex: 8,
                         child: Padding(
@@ -72,6 +100,7 @@ class CsSettingItem extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // Trailing arrow (optional)
                       Expanded(
                         flex: 1,
                         child: Icon(

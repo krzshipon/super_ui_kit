@@ -59,6 +59,13 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/animations/anim_dialog_success.json
+    - assets/animations/anim_dialog_error.json
+    - assets/animations/anim_dialog_alert.json
+    - assets/animations/anim_dialog_info.json
+    - assets/animations/loader.json
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

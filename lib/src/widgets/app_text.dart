@@ -90,26 +90,27 @@ class CSText extends StatelessWidget {
         ((textType == TextType.display)
             ? textTheme.displayMedium
             : (textType == TextType.headline)
-                ? textTheme.headlineSmall
+                ? textTheme.headlineMedium
                 : (textType == TextType.title)
                     ? textTheme.titleMedium
                     : (textType == TextType.label)
                         ? textTheme.labelMedium
                         : textTheme.bodyMedium);
 
-    return InkWell(
-        splashColor: Colors.transparent,
-        onTap: onTap,
-        child: Text(
-          text,
-          style: textStyle?.copyWith(
-              decoration: decoration,
-              decorationStyle: TextDecorationStyle.solid,
-              color: color,
-              fontSize: fontSize),
-          maxLines: maxLines,
-          overflow: overflow,
-          textAlign: textAlign,
-        ));
+    return GestureDetector(
+      onTap: onTap,
+      child: Text(
+        text,
+        style: textStyle?.copyWith(
+          decoration: decoration,
+          decorationStyle: TextDecorationStyle.solid,
+          color: color,
+          fontSize: fontSize,
+        ),
+        maxLines: maxLines,
+        overflow: overflow,
+        textAlign: textAlign,
+      ),
+    );
   }
 }

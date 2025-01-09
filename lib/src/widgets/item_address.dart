@@ -5,23 +5,66 @@ import '../shared/app_ui_helpers.dart';
 import 'app_cards.dart';
 import 'app_text.dart';
 
+/// Default corner radius for the address item card.
 const kAddressCardItemCornerRadius = 10.0;
+
+/// Default vertical padding for the address item card.
 const kAddressCardItemsPaddingV = 10.0;
+
+/// Default height for the header of the address item card.
 const kAddressCardItemHeaderHeight = 35.0;
 
+/// A customizable widget for displaying address information in a card layout.
+///
+/// This widget displays address details such as name, mobile, division, city, area, and address line.
+/// It supports optional tap interactions for the card, default icon, and edit icon.
 class CSAddressItem extends StatelessWidget {
-  final double cornerRadius = 10.0;
+  /// The corner radius of the address item card.
+  final double cornerRadius;
+
+  /// The address data to display.
   final CsAddress address;
+
+  /// Callback function triggered when the card is tapped.
   final Function()? onTap;
+
+  /// Callback function triggered when the default icon is tapped.
   final Function()? onDefaultIconTap;
+
+  /// Callback function triggered when the edit icon is tapped.
   final Function()? onEditIconTap;
+
+  /// The label for the name field.
   final String nameLabel;
+
+  /// The label for the mobile field.
   final String mobileLabel;
+
+  /// The label for the division field.
   final String divisionLabel;
+
+  /// The label for the city field.
   final String cityLabel;
+
+  /// The label for the area field.
   final String areaLabel;
+
+  /// The label for the address line field.
   final String addressLineLabel;
 
+  /// Creates a customizable address item widget.
+  ///
+  /// Parameters:
+  /// - `address`: The address data to display.
+  /// - `onTap`: Callback function triggered when the card is tapped.
+  /// - `onDefaultIconTap`: Callback function triggered when the default icon is tapped.
+  /// - `onEditIconTap`: Callback function triggered when the edit icon is tapped.
+  /// - `nameLabel`: The label for the name field.
+  /// - `mobileLabel`: The label for the mobile field.
+  /// - `divisionLabel`: The label for the division field.
+  /// - `cityLabel`: The label for the city field.
+  /// - `areaLabel`: The label for the area field.
+  /// - `addressLineLabel`: The label for the address line field.
   const CSAddressItem(
     this.address, {
     Key? key,
@@ -34,7 +77,8 @@ class CSAddressItem extends StatelessWidget {
     this.cityLabel = 'City',
     this.areaLabel = 'Area',
     this.addressLineLabel = 'Address Line',
-  }) : super(key: key);
+  })  : cornerRadius = kAddressCardItemCornerRadius,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +97,7 @@ class CSAddressItem extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 cardType: CSCardType.item,
                 children: [
+                  // Header section
                   SizedBox(
                     width: double.infinity,
                     height: kAddressCardItemHeaderHeight,
@@ -105,6 +150,7 @@ class CSAddressItem extends StatelessWidget {
                     ),
                   ),
                   verticalSpaceSmall,
+                  // Name field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
@@ -121,6 +167,7 @@ class CSAddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Mobile field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
@@ -137,6 +184,7 @@ class CSAddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Division field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
@@ -153,6 +201,7 @@ class CSAddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // City field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
@@ -169,6 +218,7 @@ class CSAddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Area field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
@@ -185,6 +235,7 @@ class CSAddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Address line field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
