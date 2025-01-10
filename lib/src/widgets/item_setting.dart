@@ -45,6 +45,7 @@ class CsSettingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -85,7 +86,10 @@ class CsSettingItem extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 10),
                           child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Icon(iconData),
+                            child: CsIcon(
+                              iconData,
+                              color: colorScheme.primary,
+                            ),
                           ),
                         ),
                       ),
@@ -96,15 +100,19 @@ class CsSettingItem extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 10),
                           child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text(title),
+                            child: CSText(
+                              title,
+                              isBold: true,
+                            ),
                           ),
                         ),
                       ),
                       // Trailing arrow (optional)
                       Expanded(
                         flex: 1,
-                        child: Icon(
+                        child: CsIcon(
                           (showTrailing) ? Icons.arrow_forward : null,
+                          color: colorScheme.primary,
                         ),
                       ),
                     ],

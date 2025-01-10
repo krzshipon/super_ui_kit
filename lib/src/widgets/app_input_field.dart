@@ -99,6 +99,7 @@ class CSInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return SizedBox(
       height: (maxLines != null && maxLines! > 1)
           ? null
@@ -115,30 +116,28 @@ class CSInputField extends StatelessWidget {
         inputFormatters: inputFormatters,
         decoration: InputDecoration(
           labelText: placeholder,
-          labelStyle: Theme.of(context).textTheme.labelMedium,
+          labelStyle: theme.textTheme.labelMedium,
           contentPadding:
               const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           filled: true,
-          fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+          fillColor: theme.colorScheme.surfaceContainerHighest,
           errorText: errorText,
           prefixIcon: leading,
           suffixIcon: trailing != null
               ? GestureDetector(onTap: trailingTapped, child: trailing)
               : null,
           border: circularBorder.copyWith(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.secondary),
+            borderSide: BorderSide(color: theme.colorScheme.secondary),
           ),
           errorBorder: circularBorder.copyWith(
-            borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+            borderSide: BorderSide(color: theme.colorScheme.error),
           ),
           focusedBorder: circularBorder.copyWith(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.primary),
+            borderSide: BorderSide(color: theme.colorScheme.primary),
           ),
           enabledBorder: circularBorder.copyWith(
-            borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.surfaceContainerHighest),
+            borderSide:
+                BorderSide(color: theme.colorScheme.surfaceContainerHighest),
           ),
         ),
         focusNode: focusNode,

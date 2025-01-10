@@ -81,7 +81,7 @@ class CSProfileItem extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 10),
                           child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Icon(
+                            child: CsIcon(
                               iconData,
                               color: theme.colorScheme.primary,
                             ),
@@ -91,21 +91,18 @@ class CSProfileItem extends StatelessWidget {
                       // Title
                       Expanded(
                         flex: 8,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(title),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: CSText(
+                            title,
+                            isBold: true,
                           ),
                         ),
                       ),
                       // Placeholder for alignment
                       Expanded(
                         flex: 1,
-                        child: Icon(
-                          null,
-                          color: theme.colorScheme.primary,
-                        ),
+                        child: Container(),
                       ),
                     ],
                   ),

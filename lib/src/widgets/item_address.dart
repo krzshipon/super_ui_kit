@@ -106,43 +106,34 @@ class CSAddressItem extends StatelessWidget {
                         color: theme.colorScheme.secondary,
                       ),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment
+                            .center, // Ensure vertical centering
                         children: [
-                          const Expanded(
-                            flex: 1,
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: kAddressCardItemsPaddingV),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: CsIcon(
-                                  null,
-                                ),
-                              ),
-                            ),
-                          ),
+                          // Leading icon
+                          Expanded(flex: 1, child: Container()),
+                          // Title
                           Expanded(
                             flex: 8,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: kAddressCardItemsPaddingV),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: CSText.headline(
-                                  address.label ?? '',
-                                  color: theme.colorScheme.onPrimary,
-                                ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: CSText.title(
+                                address.label ?? '',
+                                color: theme.colorScheme.onSecondary,
                               ),
                             ),
                           ),
+                          // Trailing icon
                           Expanded(
                             flex: 1,
-                            child: CsIcon(
-                              (address.isDefault ?? false)
-                                  ? Icons.check_circle_outline_rounded
-                                  : null,
-                              onTap: onEditIconTap,
-                              color: theme.colorScheme.onPrimary,
+                            child: Align(
+                              alignment: Alignment.center, // Center the icon
+                              child: CsIcon(
+                                (address.isDefault ?? false)
+                                    ? Icons.check_circle_outline_rounded
+                                    : null,
+                                onTap: onEditIconTap,
+                                color: theme.colorScheme.onSecondary,
+                              ),
                             ),
                           ),
                         ],
@@ -158,7 +149,10 @@ class CSAddressItem extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 1,
-                          child: CSText(nameLabel),
+                          child: CSText(
+                            nameLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -175,7 +169,10 @@ class CSAddressItem extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 1,
-                          child: CSText(mobileLabel),
+                          child: CSText(
+                            mobileLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -192,7 +189,10 @@ class CSAddressItem extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 1,
-                          child: CSText(divisionLabel),
+                          child: CSText(
+                            divisionLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -209,7 +209,10 @@ class CSAddressItem extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 1,
-                          child: CSText(cityLabel),
+                          child: CSText(
+                            cityLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -226,7 +229,10 @@ class CSAddressItem extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 1,
-                          child: CSText(areaLabel),
+                          child: CSText(
+                            areaLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -243,7 +249,10 @@ class CSAddressItem extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 1,
-                          child: CSText(addressLineLabel),
+                          child: CSText(
+                            addressLineLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,

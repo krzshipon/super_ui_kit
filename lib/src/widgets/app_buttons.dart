@@ -137,17 +137,12 @@ class CSButton extends StatelessWidget {
                       children: [
                         if (leading != null) leading!,
                         if (leading != null) const SizedBox(width: 5),
-                        Text(
+                        CSText(
                           title,
-                          style:
-                              Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    fontWeight: !isOutlined
-                                        ? FontWeight.bold
-                                        : FontWeight.w400,
-                                    color: !isOutlined
-                                        ? colorScheme.onPrimary
-                                        : colorScheme.onSurface,
-                                  ),
+                          color: !isOutlined
+                              ? colorScheme.onPrimary
+                              : colorScheme.onSurface,
+                          isBold: true,
                         ),
                       ],
                     )

@@ -13,6 +13,7 @@ class CSText extends StatelessWidget {
   final TextType textType;
   final TextDecoration? decoration;
   final void Function()? onTap;
+  final bool isBold;
 
   const CSText(
     this.text, {
@@ -26,6 +27,7 @@ class CSText extends StatelessWidget {
     this.decoration,
     this.textType = TextType.body,
     this.onTap,
+    this.isBold = false,
   }) : super(key: key);
 
   const CSText.display(
@@ -40,6 +42,7 @@ class CSText extends StatelessWidget {
     this.decoration,
     this.textType = TextType.display,
     this.onTap,
+    this.isBold = false,
   });
   const CSText.headline(
     this.text, {
@@ -53,6 +56,7 @@ class CSText extends StatelessWidget {
     this.decoration,
     this.textType = TextType.headline,
     this.onTap,
+    this.isBold = false,
   });
 
   const CSText.title(
@@ -67,6 +71,7 @@ class CSText extends StatelessWidget {
     this.decoration,
     this.textType = TextType.title,
     this.onTap,
+    this.isBold = false,
   });
 
   const CSText.label(
@@ -81,6 +86,7 @@ class CSText extends StatelessWidget {
     this.decoration,
     this.textType = TextType.label,
     this.onTap,
+    this.isBold = false,
   });
 
   @override
@@ -91,10 +97,13 @@ class CSText extends StatelessWidget {
             ? textTheme.displayMedium
             : (textType == TextType.headline)
                 ? textTheme.headlineMedium
+                    ?.copyWith(fontWeight: FontWeight.bold)
                 : (textType == TextType.title)
                     ? textTheme.titleMedium
+                        ?.copyWith(fontWeight: FontWeight.bold)
                     : (textType == TextType.label)
                         ? textTheme.labelMedium
+                            ?.copyWith(color: Theme.of(context).disabledColor)
                         : textTheme.bodyMedium);
 
     return GestureDetector(
@@ -106,6 +115,7 @@ class CSText extends StatelessWidget {
           decorationStyle: TextDecorationStyle.solid,
           color: color,
           fontSize: fontSize,
+          fontWeight: isBold ? FontWeight.bold : null,
         ),
         maxLines: maxLines,
         overflow: overflow,

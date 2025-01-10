@@ -72,63 +72,78 @@ class _HomeState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header with a back arrow and title
-            CSHeader(
-              title: 'Back Header',
-              headerType: HeaderType.other,
-              onLeftIconClick: () {
-                print('Back icon clicked!');
-                Navigator.of(context).pop();
-              },
-            ),
-            verticalSpaceRegular,
-            // Header with a home icon and title
-            CSHeader(
-              title: 'Home Header',
-              headerType: HeaderType.home,
-              onLeftIconClick: () {
-                print('Home icon clicked!');
-              },
-            ),
-            verticalSpaceRegular,
             // Header with a trailing widget
             CSHeader(
+              headerType: HeaderType.home,
               title: 'Header with Trailing',
               trailing: CsIcon(
                 Icons.settings,
               ),
             ),
-            CSCard(
-              onTap: () {
-                print('Card tapped!');
-              },
-              onLongTap: () {
-                print('Card long-pressed!');
-              },
-              cardType: CSCardType.item,
-              margin: const EdgeInsets.all(20),
-              padding: const EdgeInsets.all(16),
-              radius: 12,
-              elevation: 5,
-              children: [
-                const CsIcon(
-                  Icons.star,
-                  size: 50,
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'Welcome to Super UI Kit!',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'This is an example of a customizable card widget.',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
-                ),
-              ],
+            Align(
+              alignment: Alignment.center,
+              child: CSCard(
+                onTap: () {
+                  print('Card tapped!');
+                },
+                onLongTap: () {
+                  print('Card long-pressed!');
+                },
+                cardType: CSCardType.item,
+                margin: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(16),
+                radius: 12,
+                elevation: 5,
+                children: [
+                  const CsIcon(
+                    Icons.star,
+                    size: 50,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Welcome to Super UI Kit!',
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'This is an example of a customizable card widget.',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            const CSDivider(),
+            Align(
+                alignment: Alignment.center,
+                child: CSText('Above & below are two dividers')),
+            const CSDivider(),
+            verticalSpaceRegular,
+            Align(
+              alignment: Alignment.center,
+              child: CSText.display('Display Text'),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: CSText.headline('Headline Text'),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: CSText.title('A Title Text Example'),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: CSText('Normal Text Example'),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: CSText.label('Label Text Example'),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: CSTupleText(text1: 'Text1', text2: 'Text2'),
             ),
             verticalSpaceRegular,
             const CSItemHeader(
@@ -166,11 +181,7 @@ class _HomeState extends State<HomePage> {
               onTap: () => _simulateLoading(),
             ),
             verticalSpaceRegular,
-            const CSDivider(),
-            Align(
-                alignment: Alignment.center,
-                child: CSText('Above & below are two dividers')),
-            const CSDivider(),
+
             CsCheckbox(
               _isChecked,
               (newValue) {
@@ -232,14 +243,6 @@ class _HomeState extends State<HomePage> {
               ),
               onTap: () {},
             ),
-            verticalSpaceRegular,
-            CSText.display('Display Text'),
-            CSText.headline('Headline Text'),
-            CSText.title('Title Text'),
-            CSText('Normal Text'),
-            CSText.label('Label Text'),
-            verticalSpaceRegular,
-            CSTupleText(text1: 'Tuple', text2: 'Text'),
             verticalSpaceLarge
           ],
         ),

@@ -85,7 +85,7 @@ class CSHeader extends StatelessWidget {
         // Trailing widget
         Expanded(
           flex: 2,
-          child: Container(
+          child: Center(
             child: trailing,
           ),
         ),
