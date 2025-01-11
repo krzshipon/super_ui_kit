@@ -1,20 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:super_ui_kit/super_ui_kit.dart';
 
-class ProfileItem extends StatelessWidget {
-  final double cornerRadius = 10.0;
+/// A customizable widget for displaying profile-related items in a card layout.
+///
+/// This widget displays an icon, a title, and an optional header. It supports
+/// tap interactions and integrates seamlessly with the app's theme.
+class CSProfileItem extends StatelessWidget {
+  /// The corner radius of the profile item card.
+  final double cornerRadius;
+
+  /// The optional header text displayed above the profile item.
   final String? header;
+
+  /// The icon to display in the profile item.
   final IconData iconData;
+
+  /// The title text to display in the profile item.
   final String title;
+
+  /// Callback function triggered when the profile item is tapped.
   final Function()? onTap;
 
-  const ProfileItem({
+  /// Creates a customizable profile item widget.
+  ///
+  /// Parameters:
+  /// - `iconData`: The icon to display in the profile item.
+  /// - `title`: The title text to display in the profile item.
+  /// - `header`: The optional header text displayed above the profile item.
+  /// - `onTap`: Callback function triggered when the profile item is tapped.
+  const CSProfileItem({
     Key? key,
     required this.iconData,
     required this.title,
     this.header,
     this.onTap,
-  }) : super(key: key);
+  })  : cornerRadius = 10.0,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +45,7 @@ class ProfileItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
+        // Display the header if provided
         if (header != null)
           Padding(
             padding: EdgeInsets.only(left: kmCardMarginS + cornerRadius),
@@ -52,35 +74,35 @@ class ProfileItem extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      // Icon
                       Expanded(
                         flex: 1,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Icon(
+                            child: CsIcon(
                               iconData,
-                              color: theme.colorScheme.secondary,
+                              color: theme.colorScheme.primary,
                             ),
                           ),
                         ),
                       ),
+                      // Title
                       Expanded(
                         flex: 8,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(title),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: CSText(
+                            title,
+                            isBold: true,
                           ),
                         ),
                       ),
+                      // Placeholder for alignment
                       Expanded(
                         flex: 1,
-                        child: Icon(
-                          null,
-                          color: theme.colorScheme.secondary,
-                        ),
+                        child: Container(),
                       ),
                     ],
                   ),

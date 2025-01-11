@@ -1,22 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+/// Represents the type of dialog.
+///
+/// - `success`: A dialog indicating a successful operation.
+/// - `error`: A dialog indicating an error or failure.
+/// - `alert`: A dialog indicating a warning or alert.
+/// - `general`: A general-purpose dialog.
 enum DialogType { success, error, alert, general }
 
+/// A singleton class for showing customizable dialogs with Lottie animations.
+///
+/// This class provides a simple way to display dialogs with different types of
+/// animations (success, error, alert, general) and customizable actions.
 class AppDialog {
   static final AppDialog _instance = AppDialog._internal();
 
+  /// Returns the singleton instance of [AppDialog].
   factory AppDialog() => _instance;
 
   AppDialog._internal();
 
-  // Default Lottie animation paths
+  /// Default Lottie animation path for success dialogs.
   String successAnimationPath = 'assets/animations/anim_dialog_success.json';
+
+  /// Default Lottie animation path for error dialogs.
   String errorAnimationPath = 'assets/animations/anim_dialog_error.json';
+
+  /// Default Lottie animation path for alert dialogs.
   String alertAnimationPath = 'assets/animations/anim_dialog_alert.json';
+
+  /// Default Lottie animation path for general dialogs.
   String generalAnimationPath = 'assets/animations/anim_dialog_info.json';
 
   /// Configures the dialog settings.
+  ///
+  /// Parameters:
+  /// - `successAnimationPath`: The path to the Lottie animation for success dialogs.
+  /// - `errorAnimationPath`: The path to the Lottie animation for error dialogs.
+  /// - `alertAnimationPath`: The path to the Lottie animation for alert dialogs.
+  /// - `generalAnimationPath`: The path to the Lottie animation for general dialogs.
   void configure({
     String? successAnimationPath,
     String? errorAnimationPath,
@@ -32,6 +55,14 @@ class AppDialog {
   }
 
   /// Shows a custom dialog.
+  ///
+  /// Parameters:
+  /// - `context`: The build context.
+  /// - `bodyText`: The main text content of the dialog.
+  /// - `title`: The title of the dialog (optional).
+  /// - `onConfirm`: The callback function to execute when the "Confirm" button is pressed.
+  /// - `onCancel`: The callback function to execute when the "Cancel" button is pressed.
+  /// - `dialogType`: The type of dialog (default is `DialogType.general`).
   void showAppDialog(
     BuildContext context, {
     required String bodyText,
@@ -54,8 +85,8 @@ class AppDialog {
             children: [
               Lottie.asset(
                 _getAnimationPath(dialogType),
-                width: 100,
-                height: 100,
+                width: 45,
+                height: 45,
                 repeat: true,
               ),
               const SizedBox(height: 8),

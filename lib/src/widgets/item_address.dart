@@ -5,24 +5,80 @@ import '../shared/app_ui_helpers.dart';
 import 'app_cards.dart';
 import 'app_text.dart';
 
+/// Default corner radius for the address item card.
 const kAddressCardItemCornerRadius = 10.0;
+
+/// Default vertical padding for the address item card.
 const kAddressCardItemsPaddingV = 10.0;
+
+/// Default height for the header of the address item card.
 const kAddressCardItemHeaderHeight = 35.0;
 
-class AddressItem extends StatelessWidget {
-  final double cornerRadius = 10.0;
+/// A customizable widget for displaying address information in a card layout.
+///
+/// This widget displays address details such as name, mobile, division, city, area, and address line.
+/// It supports optional tap interactions for the card, default icon, and edit icon.
+class CSAddressItem extends StatelessWidget {
+  /// The corner radius of the address item card.
+  final double cornerRadius;
+
+  /// The address data to display.
   final CsAddress address;
+
+  /// Callback function triggered when the card is tapped.
   final Function()? onTap;
+
+  /// Callback function triggered when the default icon is tapped.
   final Function()? onDefaultIconTap;
+
+  /// Callback function triggered when the edit icon is tapped.
   final Function()? onEditIconTap;
 
-  const AddressItem(
+  /// The label for the name field.
+  final String nameLabel;
+
+  /// The label for the mobile field.
+  final String mobileLabel;
+
+  /// The label for the division field.
+  final String divisionLabel;
+
+  /// The label for the city field.
+  final String cityLabel;
+
+  /// The label for the area field.
+  final String areaLabel;
+
+  /// The label for the address line field.
+  final String addressLineLabel;
+
+  /// Creates a customizable address item widget.
+  ///
+  /// Parameters:
+  /// - `address`: The address data to display.
+  /// - `onTap`: Callback function triggered when the card is tapped.
+  /// - `onDefaultIconTap`: Callback function triggered when the default icon is tapped.
+  /// - `onEditIconTap`: Callback function triggered when the edit icon is tapped.
+  /// - `nameLabel`: The label for the name field.
+  /// - `mobileLabel`: The label for the mobile field.
+  /// - `divisionLabel`: The label for the division field.
+  /// - `cityLabel`: The label for the city field.
+  /// - `areaLabel`: The label for the area field.
+  /// - `addressLineLabel`: The label for the address line field.
+  const CSAddressItem(
     this.address, {
     Key? key,
     this.onTap,
     this.onDefaultIconTap,
     this.onEditIconTap,
-  }) : super(key: key);
+    this.nameLabel = 'Name',
+    this.mobileLabel = 'Mobile',
+    this.divisionLabel = 'Division',
+    this.cityLabel = 'City',
+    this.areaLabel = 'Area',
+    this.addressLineLabel = 'Address Line',
+  })  : cornerRadius = kAddressCardItemCornerRadius,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,51 +97,43 @@ class AddressItem extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 cardType: CSCardType.item,
                 children: [
+                  // Header section
                   SizedBox(
                     width: double.infinity,
                     height: kAddressCardItemHeaderHeight,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.primary,
+                        color: theme.colorScheme.secondary,
                       ),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment
+                            .center, // Ensure vertical centering
                         children: [
-                          const Expanded(
-                            flex: 1,
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: kAddressCardItemsPaddingV),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: CsIcon(
-                                  null,
-                                ),
-                              ),
-                            ),
-                          ),
+                          // Leading icon
+                          Expanded(flex: 1, child: Container()),
+                          // Title
                           Expanded(
                             flex: 8,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: kAddressCardItemsPaddingV),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: CSText.headline(
-                                  address.label ?? '',
-                                  color: theme.colorScheme.onPrimary,
-                                ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: CSText.title(
+                                address.label ?? '',
+                                color: theme.colorScheme.onSecondary,
                               ),
                             ),
                           ),
+                          // Trailing icon
                           Expanded(
                             flex: 1,
-                            child: CsIcon(
-                              (address.isDefault ?? false)
-                                  ? Icons.check_circle_outline_rounded
-                                  : null,
-                              onTap: onEditIconTap,
-                              color: theme.colorScheme.onPrimary,
+                            child: Align(
+                              alignment: Alignment.center, // Center the icon
+                              child: CsIcon(
+                                (address.isDefault ?? false)
+                                    ? Icons.check_circle_outline_rounded
+                                    : null,
+                                onTap: onEditIconTap,
+                                color: theme.colorScheme.onSecondary,
+                              ),
                             ),
                           ),
                         ],
@@ -93,14 +141,18 @@ class AddressItem extends StatelessWidget {
                     ),
                   ),
                   verticalSpaceSmall,
+                  // Name field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Name"),
+                          child: CSText(
+                            nameLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -109,14 +161,18 @@ class AddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Mobile field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Mobile"),
+                          child: CSText(
+                            mobileLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -125,14 +181,18 @@ class AddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Division field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Division"),
+                          child: CSText(
+                            divisionLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -141,14 +201,18 @@ class AddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // City field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("City"),
+                          child: CSText(
+                            cityLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -157,14 +221,18 @@ class AddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Area field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Area"),
+                          child: CSText(
+                            areaLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -173,14 +241,18 @@ class AddressItem extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Address line field
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: kAddressCardItemsPaddingV),
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 1,
-                          child: CSText("Address Line"),
+                          child: CSText(
+                            addressLineLabel,
+                            isBold: true,
+                          ),
                         ),
                         Expanded(
                           flex: 2,

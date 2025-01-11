@@ -1,3 +1,7 @@
 {
-  "dart.flutterSdkPath": "~/workspace/development/flutter"
+  "dart.flutterSdkPath": "~/workspace/development/flutter",
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "cSpell.words": [
+    "unfocusing"
+  ]
 }

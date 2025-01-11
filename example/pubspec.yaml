@@ -34,6 +34,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  super_ui_kit:
+    path: ../
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +58,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/animations/anim_dialog_success.json
+    - assets/animations/anim_dialog_error.json
+    - assets/animations/anim_dialog_alert.json
+    - assets/animations/anim_dialog_info.json
+    - assets/animations/loader.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:
