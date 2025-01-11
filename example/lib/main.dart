@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'package:example/dialogs.dart';
+import 'package:example/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:super_ui_kit/super_ui_kit.dart';
 
@@ -121,31 +122,6 @@ class _HomeState extends State<HomePage> {
                 child: CSText('Above & below are two dividers')),
             const CSDivider(),
             verticalSpaceRegular,
-            Align(
-              alignment: Alignment.center,
-              child: CSText.display('Display Text'),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: CSText.headline('Headline Text'),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: CSText.title('A Title Text Example'),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: CSText('Normal Text Example'),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: CSText.label('Label Text Example'),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: CSTupleText(text1: 'Text1', text2: 'Text2'),
-            ),
-            verticalSpaceRegular,
             const CSItemHeader(
               title: 'An item header',
             ),
@@ -165,6 +141,14 @@ class _HomeState extends State<HomePage> {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ButtonExamplesScreen()),
+              ),
+            ),
+            verticalSpaceRegular,
+            CSButton(
+              title: 'See Text Examples',
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CSTextExampleScreen()),
               ),
             ),
             verticalSpaceRegular,
@@ -218,13 +202,6 @@ class _HomeState extends State<HomePage> {
               onTap: () {},
             ),
             verticalSpaceRegular,
-            const Text('File Selector',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            verticalSpaceTiny,
-            CSFileSelector(
-              onTap: () {},
-            ),
-            verticalSpaceRegular,
             const Text(
               'Address Item',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -243,6 +220,14 @@ class _HomeState extends State<HomePage> {
               ),
               onTap: () {},
             ),
+            verticalSpaceRegular,
+            const Text('File Selector',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            verticalSpaceTiny,
+            CSFileSelector(
+              onTap: () {},
+            ),
+
             verticalSpaceLarge
           ],
         ),
