@@ -4,10 +4,6 @@ import 'package:flutter/services.dart';
 /// Default corner radius for the input field.
 const double baseCornerRadius = 5.0;
 
-/// A customizable input field widget with support for leading/trailing icons, error messages, and more.
-///
-/// This widget provides a consistent design for text input fields in your app. It supports
-/// optional leading and trailing icons, password fields, custom input types, and error handling.
 class CSInputField extends StatelessWidget {
   /// The controller for the text input field.
   final TextEditingController controller;
@@ -25,7 +21,6 @@ class CSInputField extends StatelessWidget {
   final void Function()? trailingTapped;
 
   /// Whether the input field is a password field (obscures text).
-  /// Default: `false`.
   final bool isPassword;
 
   /// The keyboard type for the input field (e.g., `TextInputType.text`, `TextInputType.number`).
@@ -35,11 +30,7 @@ class CSInputField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
 
   /// Whether the input field is enabled.
-  /// Default: `true`.
   final bool enabled;
-
-  /// The width of the input field.
-  final double? width;
 
   /// The error message to display below the input field.
   final String? errorText;
@@ -50,40 +41,23 @@ class CSInputField extends StatelessWidget {
   /// The maximum number of lines for the input field.
   final int? maxLines;
 
-  /// The border style for the input field.
-  final OutlineInputBorder circularBorder;
-
-  /// The height of the input field.
-  final double height;
-
-  /// The additional height for the input field when an error message is displayed.
-  final double heightExtensionForError;
-
   /// The corner radius for the input field.
   final double cornerRadius;
 
   /// The padding for the input field content.
   final double contentPadding;
 
-  /// Creates a customizable input field widget.
-  ///
-  /// Parameters:
-  /// - `controller`: The controller for the text input field.
-  /// - `placeholder`: The placeholder text displayed when the input field is empty.
-  /// - `leading`: An optional widget displayed before the input field.
-  /// - `trailing`: An optional widget displayed after the input field.
-  /// - `trailingTapped`: Callback function triggered when the trailing widget is tapped.
-  /// - `isPassword`: Whether the input field is a password field.
-  /// - `inputType`: The keyboard type for the input field.
-  /// - `inputFormatters`: List of input formatters to enforce specific input formats.
-  /// - `enabled`: Whether the input field is enabled.
-  /// - `width`: The width of the input field.
-  /// - `errorText`: The error message to display below the input field.
-  /// - `focusNode`: The focus node for the input field.
-  /// - `maxLines`: The maximum number of lines for the input field.
-  /// - `cornerRadius`: The corner radius for the input field.
-  /// - `contentPadding`: The padding for the input field content.
-  CSInputField({
+  /// The validator function for the input field.
+  final String? Function(String?)? validator;
+
+  /// The callback triggered when the input field changes its value.
+  final void Function(String)? onChanged;
+
+  /// The callback triggered when the input field is saved in a form.
+  final void Function(String?)? onSaved;
+
+  /// Creates a customizable input field widget that works both with and without a form.
+  const CSInputField({
     Key? key,
     required this.controller,
     this.placeholder = '',
@@ -94,71 +68,108 @@ class CSInputField extends StatelessWidget {
     this.inputType,
     this.enabled = true,
     this.errorText,
-    this.width,
     this.focusNode,
     this.maxLines,
     this.inputFormatters,
-    this.cornerRadius = baseCornerRadius,
+    this.cornerRadius = 5.0,
     this.contentPadding = 15.0,
-  })  : circularBorder = OutlineInputBorder(
-          borderRadius: BorderRadius.circular(cornerRadius),
-        ),
-        height = 50.0 + contentPadding,
-        heightExtensionForError = 25.0,
-        super(key: key);
+    this.validator,
+    this.onChanged,
+    this.onSaved,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    return SizedBox(
-      height: (maxLines != null && maxLines! > 1)
-          ? null
-          : (errorText == null)
-              ? height
-              : height + heightExtensionForError,
-      child: TextField(
-        autocorrect: false,
-        enabled: enabled,
-        controller: controller,
-        obscureText: isPassword,
-        keyboardType: inputType ?? TextInputType.text,
-        maxLines: isPassword ? 1 : maxLines,
-        inputFormatters: inputFormatters,
-        decoration: InputDecoration(
-          labelText: placeholder,
-          labelStyle: theme.textTheme.labelMedium,
-          contentPadding:
-              EdgeInsets.symmetric(vertical: contentPadding, horizontal: 15),
-          filled: true,
-          fillColor: theme.colorScheme.surfaceContainerHighest,
-          errorText: errorText,
-          prefixIcon: leading != null
-              ? Padding(
-                  padding: EdgeInsets.only(
-                      left: cornerRadius + 5,
-                      right: 5), // Add padding for the leading widget
-                  child: leading, // Your leading widget
-                )
-              : null,
-          suffixIcon: trailing != null
-              ? GestureDetector(onTap: trailingTapped, child: trailing)
-              : null,
-          border: circularBorder.copyWith(
-            borderSide: BorderSide(color: theme.colorScheme.secondary),
-          ),
-          errorBorder: circularBorder.copyWith(
-            borderSide: BorderSide(color: theme.colorScheme.error),
-          ),
-          focusedBorder: circularBorder.copyWith(
-            borderSide: BorderSide(color: theme.colorScheme.primary),
-          ),
-          enabledBorder: circularBorder.copyWith(
-            borderSide:
-                BorderSide(color: theme.colorScheme.surfaceContainerHighest),
-          ),
+    final theme = Theme.of(context);
+
+    // If `validator` is provided, treat it as a FormField
+    if (validator != null || onSaved != null) {
+      return FormField<String>(
+        validator: validator,
+        initialValue: controller.text,
+        onSaved: onSaved,
+        builder: (FormFieldState<String> state) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildTextField(
+                context,
+                errorText: state.hasError
+                    ? state.errorText
+                    : null, // Use FormField errors
+                onChanged: (value) {
+                  state.didChange(value); // Update the Form state
+                  if (onChanged != null) {
+                    onChanged!(value);
+                  }
+                },
+              ),
+              if (state.hasError)
+                Padding(
+                  padding: const EdgeInsets.only(top: 5.0),
+                  child: Text(
+                    state.errorText!,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: theme.colorScheme.error,
+                    ),
+                  ),
+                ),
+            ],
+          );
+        },
+      );
+    }
+
+    // If no validator or onSaved is provided, render a normal TextField
+    return _buildTextField(context, errorText: errorText, onChanged: onChanged);
+  }
+
+  Widget _buildTextField(BuildContext context,
+      {String? errorText, void Function(String)? onChanged}) {
+    final theme = Theme.of(context);
+
+    return TextField(
+      autocorrect: false,
+      enabled: enabled,
+      controller: controller,
+      obscureText: isPassword,
+      keyboardType: inputType ?? TextInputType.text,
+      focusNode: focusNode,
+      maxLines: isPassword ? 1 : maxLines,
+      inputFormatters: inputFormatters,
+      decoration: InputDecoration(
+        labelText: placeholder,
+        errorText: errorText,
+        contentPadding: EdgeInsets.symmetric(
+          vertical: contentPadding,
+          horizontal: 15.0,
         ),
-        focusNode: focusNode,
+        filled: true,
+        fillColor: theme.colorScheme.surfaceContainerHighest,
+        prefixIcon: leading,
+        suffixIcon: trailing != null
+            ? GestureDetector(onTap: trailingTapped, child: trailing)
+            : null,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(cornerRadius),
+          borderSide: BorderSide(color: theme.colorScheme.secondary),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(cornerRadius),
+          borderSide: BorderSide(color: theme.colorScheme.primary),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(cornerRadius),
+          borderSide:
+              BorderSide(color: theme.colorScheme.surfaceContainerHighest),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(cornerRadius),
+          borderSide: BorderSide(color: theme.colorScheme.error),
+        ),
       ),
+      onChanged: onChanged,
     );
   }
 }
