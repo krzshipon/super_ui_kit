@@ -28,7 +28,7 @@ class CSFileSelector extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
-            padding: const EdgeInsets.only(left: cornerRadius),
+            padding: const EdgeInsets.only(left: baseCornerRadius),
             child: CSItemHeader(title: header)),
         Row(children: [
           Expanded(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 /// Default corner radius for the input field.
-const double cornerRadius = 5.0;
+const double baseCornerRadius = 5.0;
 
 /// A customizable input field widget with support for leading/trailing icons, error messages, and more.
 ///
@@ -59,6 +59,9 @@ class CSInputField extends StatelessWidget {
   /// The additional height for the input field when an error message is displayed.
   final double heightExtensionForError;
 
+  /// The corner radius for the input field.
+  final double cornerRadius;
+
   /// Creates a customizable input field widget.
   ///
   /// Parameters:
@@ -91,6 +94,7 @@ class CSInputField extends StatelessWidget {
     this.maxLines,
     this.inputFormatters,
     this.height = 50.0,
+    this.cornerRadius = baseCornerRadius,
   })  : circularBorder = OutlineInputBorder(
           borderRadius: BorderRadius.circular(cornerRadius),
         ),
