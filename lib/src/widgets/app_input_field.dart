@@ -135,8 +135,8 @@ class CSInputField extends StatelessWidget {
           prefixIcon: leading != null
               ? Padding(
                   padding: EdgeInsets.only(
-                    left: cornerRadius + 5,
-                  ), // Add padding for the leading widget
+                      left: cornerRadius + 5,
+                      right: 5), // Add padding for the leading widget
                   child: leading, // Your leading widget
                 )
               : null,
