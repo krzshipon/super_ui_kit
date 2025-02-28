@@ -134,6 +134,7 @@ class _HomeState extends State<HomePage> {
               trailingTapped: () {
                 _controller.clear();
               },
+              errorText: "Name can't be empty",
             ),
             verticalSpaceRegular,
             CSButton(

@@ -62,6 +62,9 @@ class CSInputField extends StatelessWidget {
   /// The corner radius for the input field.
   final double cornerRadius;
 
+  /// The padding for the input field content.
+  final double contentPadding;
+
   /// Creates a customizable input field widget.
   ///
   /// Parameters:
@@ -78,6 +81,8 @@ class CSInputField extends StatelessWidget {
   /// - `errorText`: The error message to display below the input field.
   /// - `focusNode`: The focus node for the input field.
   /// - `maxLines`: The maximum number of lines for the input field.
+  /// - `cornerRadius`: The corner radius for the input field.
+  /// - `contentPadding`: The padding for the input field content.
   CSInputField({
     Key? key,
     required this.controller,
@@ -93,11 +98,12 @@ class CSInputField extends StatelessWidget {
     this.focusNode,
     this.maxLines,
     this.inputFormatters,
-    this.height = 50.0,
     this.cornerRadius = baseCornerRadius,
+    this.contentPadding = 15.0,
   })  : circularBorder = OutlineInputBorder(
           borderRadius: BorderRadius.circular(cornerRadius),
         ),
+        height = 50.0 + contentPadding,
         heightExtensionForError = 25.0,
         super(key: key);
 
@@ -122,7 +128,7 @@ class CSInputField extends StatelessWidget {
           labelText: placeholder,
           labelStyle: theme.textTheme.labelMedium,
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              EdgeInsets.symmetric(vertical: contentPadding, horizontal: 15),
           filled: true,
           fillColor: theme.colorScheme.surfaceContainerHighest,
           errorText: errorText,
