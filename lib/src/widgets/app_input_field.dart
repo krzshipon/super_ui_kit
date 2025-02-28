@@ -90,10 +90,10 @@ class CSInputField extends StatelessWidget {
     this.focusNode,
     this.maxLines,
     this.inputFormatters,
+    this.height = 50.0,
   })  : circularBorder = OutlineInputBorder(
           borderRadius: BorderRadius.circular(cornerRadius),
         ),
-        height = 50.0,
         heightExtensionForError = 25.0,
         super(key: key);
 
