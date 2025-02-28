@@ -48,6 +48,9 @@ class CSButton extends StatelessWidget {
   /// The corner radius of the button.
   final double cornerRadius;
 
+  /// The alpha value for the button's color.
+  final int alpha;
+
   /// Creates a standard button.
   ///
   /// Parameters:
@@ -71,6 +74,7 @@ class CSButton extends StatelessWidget {
     this.type = ButtonType.positive,
     this.height = 45.0,
     this.cornerRadius = 5.0,
+    this.alpha = 255,
   })  : isOutlined = false,
         super(key: key);
 
@@ -91,6 +95,7 @@ class CSButton extends StatelessWidget {
     this.type = ButtonType.positive,
     this.height = 45.0,
     this.cornerRadius = 5.0,
+    this.alpha = 255,
   })  : isDisabled = false,
         isBusy = false,
         isOutlined = true;
@@ -112,8 +117,8 @@ class CSButton extends StatelessWidget {
                 color: isDisabled
                     ? theme.disabledColor
                     : ((type == ButtonType.negative)
-                        ? colorScheme.error
-                        : colorScheme.primary),
+                        ? colorScheme.error.withAlpha(alpha)
+                        : colorScheme.primary.withAlpha(alpha)),
                 borderRadius: BorderRadius.circular(cornerRadius),
               )
             : BoxDecoration(
@@ -123,8 +128,8 @@ class CSButton extends StatelessWidget {
                   color: isDisabled
                       ? theme.disabledColor
                       : ((type == ButtonType.negative)
-                          ? colorScheme.error
-                          : colorScheme.primary),
+                          ? colorScheme.error.withAlpha(alpha)
+                          : colorScheme.primary.withAlpha(alpha)),
                   width: 1,
                 ),
               ),
