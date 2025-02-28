@@ -132,7 +132,14 @@ class CSInputField extends StatelessWidget {
           filled: true,
           fillColor: theme.colorScheme.surfaceContainerHighest,
           errorText: errorText,
-          prefixIcon: leading,
+          prefixIcon: leading != null
+              ? Padding(
+                  padding: EdgeInsets.only(
+                    left: cornerRadius + 5,
+                  ), // Add padding for the leading widget
+                  child: leading, // Your leading widget
+                )
+              : null,
           suffixIcon: trailing != null
               ? GestureDetector(onTap: trailingTapped, child: trailing)
               : null,
