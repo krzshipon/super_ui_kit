@@ -143,6 +143,8 @@ class _HomeState extends State<HomePage> {
                 context,
                 MaterialPageRoute(builder: (context) => ButtonExamplesScreen()),
               ),
+              cornerRadius: 20,
+              height: 60,
             ),
             verticalSpaceRegular,
             CSButton(

@@ -43,10 +43,10 @@ class CSButton extends StatelessWidget {
   final ButtonType type;
 
   /// The height of the button.
-  final double height = 45.0;
+  final double height;
 
   /// The corner radius of the button.
-  final double cornerRadius = 5.0;
+  final double cornerRadius;
 
   /// Creates a standard button.
   ///
@@ -58,6 +58,8 @@ class CSButton extends StatelessWidget {
   /// - `leading`: An optional widget to display before the button text.
   /// - `width`: The width of the button.
   /// - `type`: The type of button (default is `ButtonType.positive`).
+  /// - `height`: The height of the button.
+  /// - `cornerRadius`: The corner radius of the button.
   const CSButton({
     Key? key,
     required this.title,
@@ -67,6 +69,8 @@ class CSButton extends StatelessWidget {
     this.leading,
     this.width,
     this.type = ButtonType.positive,
+    this.height = 45.0,
+    this.cornerRadius = 5.0,
   })  : isOutlined = false,
         super(key: key);
 
@@ -85,6 +89,8 @@ class CSButton extends StatelessWidget {
     this.leading,
     this.width,
     this.type = ButtonType.positive,
+    this.height = 45.0,
+    this.cornerRadius = 5.0,
   })  : isDisabled = false,
         isBusy = false,
         isOutlined = true;
