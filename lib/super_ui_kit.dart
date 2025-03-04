@@ -15,6 +15,7 @@ export 'src/widgets/app_tuple_text.dart';
 export 'src/widgets/app_icon.dart';
 export 'src/widgets/app_loader.dart';
 export 'src/widgets/app_dialog.dart';
+export 'src/widgets/app_snackbar.dart';
 export 'src/widgets/app_animation.dart';
 export 'src/widgets/item_setting.dart';
 export 'src/widgets/item_profile.dart';
