@@ -10,7 +10,9 @@ const double baseCornerRadius = 5.0;
 /// - In standalone mode, error texts can be directly passed using the `errorText` parameter.
 /// - When used inside a `Form`, the `validator` and `onSaved` provide validation and saving logic,
 ///   and error messages are handled automatically.
-class CSInputField extends StatelessWidget {
+///
+/// This version is made stateful to manage password field behavior (text obscuring) internally.
+class CSInputField extends StatefulWidget {
   /// The [TextEditingController] that manages the input field's current value.
   final TextEditingController controller;
 
@@ -25,9 +27,6 @@ class CSInputField extends StatelessWidget {
 
   /// Callback function triggered when the trailing widget is tapped.
   final void Function()? trailingTapped;
-
-  /// Whether the input field is a password field (text will be obscured).
-  final bool isPassword;
 
   /// The keyboard type for the input field (e.g., `TextInputType.text`, `TextInputType.number`).
   final TextInputType? inputType;
@@ -75,7 +74,6 @@ class CSInputField extends StatelessWidget {
     this.leading,
     this.trailing,
     this.trailingTapped,
-    this.isPassword = false,
     this.inputType,
     this.enabled = true,
     this.errorText,
@@ -90,13 +88,29 @@ class CSInputField extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<CSInputField> createState() => _CSInputFieldState();
+}
+
+class _CSInputFieldState extends State<CSInputField> {
+  /// Maintains the state of whether the password is visible.
+  bool _isObscured = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // If inputType is a password field, make text initially obscured.
+    _isObscured = widget.inputType == TextInputType.visiblePassword;
+  }
+
+  @override
   Widget build(BuildContext context) {
     // If a validator or onSaved is provided, treat it as a FormField.
-    if (validator != null || onSaved != null) {
+    if (widget.validator != null || widget.onSaved != null) {
       return FormField<String>(
-        validator: validator, // Handle validation through FormField
-        initialValue: controller.text,
-        onSaved: onSaved, // Save functionality for forms
+        validator: widget.validator, // Handle validation through FormField
+        initialValue: widget.controller.text,
+        onSaved: widget.onSaved, // Save functionality for forms
         builder: (FormFieldState<String> state) {
           return _buildTextField(
             context,
@@ -104,8 +118,8 @@ class CSInputField extends StatelessWidget {
                 state.hasError ? state.errorText : null, // FormField error text
             onChanged: (value) {
               state.didChange(value); // Update FormField state on change
-              if (onChanged != null) {
-                onChanged!(
+              if (widget.onChanged != null) {
+                widget.onChanged!(
                     value); // Trigger external onChanged callback if provided
               }
             },
@@ -117,8 +131,8 @@ class CSInputField extends StatelessWidget {
     // For standalone usage (no validator or onSaved provided)
     return _buildTextField(
       context,
-      errorText: errorText, // Standalone error text
-      onChanged: onChanged,
+      errorText: widget.errorText, // Standalone error text
+      onChanged: widget.onChanged,
     );
   }
 
@@ -129,47 +143,65 @@ class CSInputField extends StatelessWidget {
 
     return TextField(
       autocorrect: false, // Disable autocorrect for better control
-      enabled: enabled, // Dynamically handle whether the field is enabled
-      controller: controller,
-      obscureText: isPassword, // Obscure text for password fields
-      keyboardType: inputType ?? TextInputType.text, // Set the keyboard type
-      focusNode: focusNode,
-      maxLines: isPassword
+      enabled:
+          widget.enabled, // Dynamically handle whether the field is enabled
+      controller: widget.controller,
+      obscureText: _isObscured, // Obscure text if needed
+      keyboardType: widget.inputType ?? TextInputType.text, // Set keyboard type
+      focusNode: widget.focusNode,
+      maxLines: widget.inputType == TextInputType.visiblePassword
           ? 1
-          : maxLines, // Restrict max lines if password is enabled
-      inputFormatters: inputFormatters, // Apply input formatters if provided
+          : widget.maxLines, // Restrict max lines for passwords
+      inputFormatters:
+          widget.inputFormatters, // Apply input formatters if provided
       decoration: InputDecoration(
-        labelText: placeholder, // Placeholder text
+        labelText: widget.placeholder, // Placeholder text
         errorText: errorText, // Error text dynamically passed
         contentPadding: EdgeInsets.symmetric(
-          vertical: contentPadding,
+          vertical: widget.contentPadding,
           horizontal: 15.0,
         ),
         filled: true,
         fillColor:
             theme.colorScheme.surfaceContainerHighest, // Background color
-        prefixIcon: leading, // Leading icon
-        suffixIcon: trailing != null
-            ? GestureDetector(onTap: trailingTapped, child: trailing)
-            : null, // Trailing icon with optional tap callback
+        prefixIcon: widget.leading, // Leading icon
+        suffixIcon: widget.inputType == TextInputType.visiblePassword
+            ? IconButton(
+                icon: Icon(
+                  _isObscured ? Icons.visibility_off : Icons.visibility,
+                ),
+                onPressed: () {
+                  // Toggle the visibility of the password
+                  setState(() {
+                    _isObscured = !_isObscured;
+                  });
+                },
+              )
+            : (widget.trailing != null
+                ? GestureDetector(
+                    onTap: widget.trailingTapped,
+                    child: widget.trailing,
+                  )
+                : null),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(cornerRadius), // Border radius
+          borderRadius:
+              BorderRadius.circular(widget.cornerRadius), // Border radius
           borderSide:
               BorderSide(color: theme.colorScheme.secondary), // Default border
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(cornerRadius),
+          borderRadius: BorderRadius.circular(widget.cornerRadius),
           borderSide:
               BorderSide(color: theme.colorScheme.primary), // Focus border
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(cornerRadius),
+          borderRadius: BorderRadius.circular(widget.cornerRadius),
           borderSide: BorderSide(
               color:
                   theme.colorScheme.surfaceContainerHighest), // Enabled border
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(cornerRadius),
+          borderRadius: BorderRadius.circular(widget.cornerRadius),
           borderSide:
               BorderSide(color: theme.colorScheme.error), // Error border
         ),
