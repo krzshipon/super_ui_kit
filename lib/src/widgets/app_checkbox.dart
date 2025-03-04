@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:super_ui_kit/super_ui_kit.dart';
 import 'app_text.dart'; // Assuming this is your custom text widget
 
 /// A customizable checkbox widget with an optional title.
@@ -41,15 +42,33 @@ class CsCheckbox extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Checkbox with custom styling
-        Checkbox(
-          value: value,
-          onChanged: onChanged,
-          activeColor: theme.colorScheme.primary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+        // Checkbox with circular background
+        GestureDetector(
+          onTap: () => onChanged?.call(!(value ?? false)),
+          child: Container(
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              color: value ?? false
+                  ? theme.colorScheme.primary
+                  : Colors.transparent,
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: theme.colorScheme.primary,
+                style: BorderStyle.solid,
+                width: 2,
+              ),
+            ),
+            child: value ?? false
+                ? Icon(
+                    Icons.check,
+                    size: 15,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  )
+                : null,
           ),
         ),
+        horizontalSpaceSmall,
         // Optional title text
         if (title != null) CSText(title ?? ''),
       ],
